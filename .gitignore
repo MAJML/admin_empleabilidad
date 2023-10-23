@@ -1,0 +1,7 @@
+#-------------------------
+# Composer
+#-------------------------
+App/Config/*
+Core/*
+composer.lock
+vendor/*

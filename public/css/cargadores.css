@@ -1,0 +1,124 @@
+
+.app-theme-white .app-page-title {
+    background: #2a5298 !important;
+}
+.app-page-title{
+    margin: 0px !important;
+}
+.card{
+    border: 1px solid #2a5298 !important;
+}
+.cabezera_tabla{
+    /* background-image: linear-gradient(to top,#1e3c72 0%,#1e3c72 1%,#2a5298 100%)!important; */
+    background: #2a5298 !important;
+    color: #ffffffee;
+}
+.btn-primary{
+    
+    background: #2a5298 !important;
+}
+/* MARGEN Y ESTILOS DE LOS FILTROS */
+.margen-right{
+    padding-right: 10px !important;
+}
+.achicar-bottom{
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: -10px !important;
+}
+.btn-stile-personal{
+    background: #284E92;
+    color: #fff;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.btn-stile-personal:hover{
+    background: #0049AF;
+}
+.ancho_caja_input{
+    width: 20%;
+}
+
+/* CARGADOR DEL SISTEMA */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: 1s all;
+    opacity: 0;
+}
+.loading.show {
+    opacity: 1;
+}
+.loading .spin {
+    border: 3px solid hsla(204, 64%, 39%, 0.2);
+    border-top-color: #3cefff;
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    to {
+    transform: rotate(360deg);
+    }
+}  
+
+/* CARGADOR DE LAS TABLAS */
+.container-tablita{ 	
+	display: grid;
+    place-content: center;
+    height: 200px;
+    text-align: center;
+}
+.cargando{
+    text-align: center;
+    width: 120px;
+    height: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+	margin: 0 auto;	
+}
+.texto-cargando{ 
+	padding-top:20px
+}
+.cargando span{
+    text-align: center;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+.pelotas {
+    width: 25px;
+    height: 25px;
+    background-color: #2a5298;
+    animation: salto .5s alternate
+    infinite;
+	border-radius: 50%	
+}
+.pelotas:nth-child(2) {
+    animation-delay: .18s;
+}
+.pelotas:nth-child(3) {
+    animation-delay: .37s;
+}
+@keyframes salto {
+    from {
+        transform: scaleX(1.25);
+    }
+    to{
+        transform: 
+        translateY(-50px) scaleX(1);
+    }
+}
+
