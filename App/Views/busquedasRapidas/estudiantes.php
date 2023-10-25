@@ -42,10 +42,14 @@ table.dataTable td {
         <div class="row">
             <div
                 class="col-12 d-flex flex-wrap justify-content-sm-center justify-content-lg-start justify-content-center w-100 p-1">
-                <form action="" class="d-flex flex-wrap col-12" role="form" method="post" id="">
+                <form action="" class="d-flex flex-wrap col-12 justify-content-between" role="form" method="post" id="">
 
                     <div class="mb-2 col-lg-5 col-md-6 col-sm-12">
                         <input type="search" class="form-control form-control-sm fecha1" name='' id="buscarEstudiante" placeholder="Buscar Estudiante por DNI o por Apellido" required>
+                    </div>
+
+                    <div class="col-lg-2">
+                        <a href="" class="btn btn-outline-primary"><i class="fa fa-plus" aria-hidden="true"></i> Crear cuenta al Estudiante</a>
                     </div>
 
                 </form>

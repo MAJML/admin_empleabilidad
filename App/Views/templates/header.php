@@ -788,6 +788,7 @@ table {
                                 <a class="<?= ($link == $baseUrl.'Usuario') ? 'mm-active' : '' ; ?>" href="Usuario"><i
                                         class="fa-solid fa-user" width="23px"></i> Usuarios</a>
                             </li>
+
                             <!-- MENU REPORTES -->
                             <li class="app-sidebar__heading" <?= ($_SESSION['perfil'] == 'Asistente')? 'hidden':'' ?>>
                                 Reportes</li>
