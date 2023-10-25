@@ -33,4 +33,5 @@ class UsuariosModel extends Model
         $query = $this->db->prepare('UPDATE usuarios SET fecha_desconect="'.$horaSalida.'", online=0 WHERE correo="'.$correo.'"');
         $query -> execute();
     }
+
 }

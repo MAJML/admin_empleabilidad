@@ -7,6 +7,14 @@ use Core\Orm;
 
 class InicioModel extends Model
 {
+    public function alumnosOnline()
+    {
+        $query = $this->db->prepare("SELECT count(*) FROM alumnos where online=1 and deleted_at is null");
+        $query->execute();
+        /* return $query->fetch(PDO::FETCH_ASSOC); */
+        return json_encode($query->fetch());
+    }
+
     public function WhereUsuario($correo)
     {
         $query = $this->db->prepare("SELECT nombre, apellido, correo, perfil, password FROM usuarios WHERE correo = '".$correo."'");

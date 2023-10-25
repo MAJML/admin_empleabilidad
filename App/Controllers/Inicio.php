@@ -17,11 +17,17 @@ class Inicio
             exit;
         }
         $this -> inicioModel = new InicioModel();
+        $_SESSION['alumnos_online'] = $this->inicioModel->alumnosOnline();
     }
 
     public function index()
     {
         View::render(["inicio/index"]);
+    }
+
+    public function alumnosOnline()
+    {
+        
     }
 
     public function ReporteEmpleador()

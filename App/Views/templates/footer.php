@@ -24,6 +24,7 @@ setTimeout(function() {
     elemento.classList.remove('loading');
 }, 200);
 </script>
+<script src="<?= $baseUrl ?>js/main.js"></script>
 
 </body>
 </html>
