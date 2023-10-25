@@ -606,7 +606,7 @@ table {
                                 <div class="dropdown-menu-header">
                                     <div class="dropdown-menu-header-inner bg-premium-dark">
                                         <div class="menu-header-image"
-                                            style="background-image: url('assets/images/dropdown-header/abstract4.jpg');">
+                                            style="background-image: url('assets/images/dropdown-header/city2.jpg');">
                                         </div>
                                         <div class="menu-header-content text-white">
                                             <h5 class="menu-header-title">Alumnos Conectados</h5>
@@ -616,11 +616,10 @@ table {
                                 <div class="widget-chart">
                                     <div class="widget-chart-content">
                                         <div class="icon-wrapper rounded-circle">
-                                            <div class="icon-wrapper-bg opacity-9 bg-focus"></div>
-                                            <i class="lnr-users text-white"></i>
+                                            <img src="<?= $baseUrl ?>img/online.gif" alt="">
                                         </div>
                                         <div class="widget-numbers">
-                                            <span><?= $_SESSION['alumnos_online'] ?></span>
+                                            <span id="alumnos_online"></span>
                                         </div>
                                         <div class="widget-subheading pt-2">
                                             Vista de perfiles desde el último inicio de sesión

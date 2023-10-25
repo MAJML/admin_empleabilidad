@@ -9,10 +9,10 @@ class InicioModel extends Model
 {
     public function alumnosOnline()
     {
-        $query = $this->db->prepare("SELECT count(*) FROM alumnos where online=1 and deleted_at is null");
+        $query = $this->db->prepare("SELECT count(*) as 'conectados' FROM alumnos where online=1 and deleted_at is null");
         $query->execute();
         /* return $query->fetch(PDO::FETCH_ASSOC); */
-        return json_encode($query->fetch());
+        return $query->fetch();
     }
 
     public function WhereUsuario($correo)

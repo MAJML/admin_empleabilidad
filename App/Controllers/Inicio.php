@@ -17,7 +17,6 @@ class Inicio
             exit;
         }
         $this -> inicioModel = new InicioModel();
-        $_SESSION['alumnos_online'] = $this->inicioModel->alumnosOnline();
     }
 
     public function index()
@@ -27,7 +26,8 @@ class Inicio
 
     public function alumnosOnline()
     {
-        
+        $respuesta = $this->inicioModel->alumnosOnline();
+        View::renderJson($respuesta);
     }
 
     public function ReporteEmpleador()
