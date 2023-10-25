@@ -111,17 +111,17 @@ table {
                                                     <ul class="nav flex-column">
                                                         <li class="nav-item-header nav-item"> Busquedas Rápidas</li>
                                                         <li class="nav-item">
-                                                            <a href="BR_empleadores" class="nav-link">
+                                                            <a href="<?=$baseUrl?>BR_empleadores" class="nav-link">
                                                                 <span> Empleadores</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a href="BR_estudiantes" class="nav-link">
+                                                            <a href="<?=$baseUrl?>BR_estudiantes" class="nav-link">
                                                                 <span> Estudiantes</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a href="BR_avisos" class="nav-link">
+                                                            <a href="<?=$baseUrl?>BR_avisos" class="nav-link">
                                                                 <span> Avisos</span>
                                                             </a>
                                                         </li>
@@ -762,30 +762,30 @@ table {
                             <li class="app-sidebar__heading">Menu</li>
                             <!-- MENU INICIO -->
                             <li>
-                                <a href="Inicio" class="<?= ($link == $baseUrl.'Inicio') ? 'mm-active' : '' ; ?>"><i
+                                <a href="<?=$baseUrl?>Inicio" class="<?= ($link == $baseUrl.'Inicio') ? 'mm-active' : '' ; ?>"><i
                                         class="fa-solid fa-house" width="23px"></i> Inicio</a>
                             </li>
                             <!-- MENU EMPLEADOR -->
                             <li>
                                 <a class="<?= ($link == $baseUrl.'PersonaTodos') ? 'mm-active' : '' ; ?>"
-                                    href="PersonaTodos"><i class="fa-solid fa-building-user" width="23px"></i>
+                                    href="<?=$baseUrl?>PersonaTodos"><i class="fa-solid fa-building-user" width="23px"></i>
                                     Empleador</a>
                             </li>
                             <!-- MENU ESTUDIANTES -->
                             <li>
                                 <a class="<?= ($link == $baseUrl.'EstudianteTodos') ? 'mm-active' : '' ; ?>"
-                                    href="EstudianteTodos"><i class="fa-solid fa-users" width="23px"></i>
+                                    href="<?=$baseUrl?>EstudianteTodos"><i class="fa-solid fa-users" width="23px"></i>
                                     Estudiantes</a>
                             </li>
                             <!-- MENU AVISOS -->
                             <li>
-                                <a class="<?= ($link == $baseUrl.'Avisos') ? 'mm-active' : '' ; ?>" href="Avisos"><i
+                                <a class="<?= ($link == $baseUrl.'Avisos') ? 'mm-active' : '' ; ?>" href="<?=$baseUrl?>Avisos"><i
                                         class="fa-solid fa-building-user" width="23px"></i> Avisos</a>
                             </li>
                             <!-- MENU USUARIOS -->
                             <li
                                 <?= ($_SESSION['perfil'] == 'Encargado' || $_SESSION['perfil'] == 'Asistente')? 'hidden':'' ?>>
-                                <a class="<?= ($link == $baseUrl.'Usuario') ? 'mm-active' : '' ; ?>" href="Usuario"><i
+                                <a class="<?= ($link == $baseUrl.'Usuario') ? 'mm-active' : '' ; ?>" href="<?=$baseUrl?>Usuario"><i
                                         class="fa-solid fa-user" width="23px"></i> Usuarios</a>
                             </li>
 
@@ -801,19 +801,19 @@ table {
                                 <ul>
                                     <li>
                                         <a class="<?= ($link == $baseUrl.'RE_actividadEconomica') ? 'mm-active' : '' ; ?>"
-                                            href="RE_actividadEconomica">
+                                            href="<?=$baseUrl?>RE_actividadEconomica">
                                             <i class="metismenu-icon"></i> Actividad Económica
                                         </a>
                                     </li>
                                     <li>
                                         <a class="<?= ($link == $baseUrl.'RE_validacion') ? 'mm-active' : '' ; ?>"
-                                            href="RE_validacion">
+                                            href="<?=$baseUrl?>RE_validacion">
                                             <i class="metismenu-icon"></i> Empleadores Validados
                                         </a>
                                     </li>
                                     <li hidden>
                                         <a class="<?= ($link == $baseUrl.'RE_requerimiento') ? 'mm-active' : '' ; ?>"
-                                            href="RE_requerimiento">
+                                            href="<?=$baseUrl?>RE_requerimiento">
                                             <i class="metismenu-icon"></i> Requerimiento
                                         </a>
                                     </li>
@@ -828,13 +828,13 @@ table {
                                 <ul>
                                     <li>
                                         <a class="<?= ($link == $baseUrl.'R_EST_intermediacion') ? 'mm-active' : '' ; ?>"
-                                            href="R_EST_intermediacion">
+                                            href="<?=$baseUrl?>R_EST_intermediacion">
                                             <i class="metismenu-icon"></i> Intermediados
                                         </a>
                                     </li>
                                     <li>
                                         <a class="<?= ($link == $baseUrl.'R_EST_seguimientoPostulante') ? 'mm-active' : '' ; ?>"
-                                            href="R_EST_seguimientoPostulante">
+                                            href="<?=$baseUrl?>R_EST_seguimientoPostulante">
                                             <i class="metismenu-icon"></i> Seguimiento al Postulante
                                         </a>
                                     </li>
@@ -849,13 +849,13 @@ table {
                                 <ul>
                                     <li>
                                         <a class="<?= ($link == $baseUrl.'R_A_cantidades') ? 'mm-active' : '' ; ?>"
-                                            href="R_A_cantidades">
+                                            href="<?=$baseUrl?>R_A_cantidades">
                                             <i class="metismenu-icon"></i> Cantidades
                                         </a>
                                     </li>
                                     <li>
                                         <a class="<?= ($link == $baseUrl.'R_A_efectividadAviso') ? 'mm-active' : '' ; ?>"
-                                            href="R_A_efectividadAviso">
+                                            href="<?=$baseUrl?>R_A_efectividadAviso">
                                             <i class="metismenu-icon"></i> Efectividad por Aviso
                                         </a>
                                     </li>

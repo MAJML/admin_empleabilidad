@@ -49,7 +49,7 @@ table.dataTable td {
                     </div>
 
                     <div class="col-lg-2">
-                        <a href="" class="btn btn-outline-primary"><i class="fa fa-plus" aria-hidden="true"></i> Crear cuenta al Estudiante</a>
+                        <a href="BR_estudiantes/crearCuenta" class="btn btn-outline-primary"><i class="fa fa-plus" aria-hidden="true"></i> Crear cuenta al Estudiante</a>
                     </div>
 
                 </form>

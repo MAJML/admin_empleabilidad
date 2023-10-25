@@ -36,4 +36,9 @@ class BR_estudiantes
         echo json_encode($respuesta);
     }
 
+    public function crearCuenta()
+    {
+        View::render(["registro/estudiantes"]);
+    }
+
 }

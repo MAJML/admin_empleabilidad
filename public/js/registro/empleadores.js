@@ -1,0 +1,1 @@
+console.log("esto es la consola empleadores registro");
