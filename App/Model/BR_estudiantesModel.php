@@ -46,4 +46,63 @@ class BR_estudiantesModel extends Model
         return $query->fetchAll();
     }
     
+    public function departamento()
+    {
+        $query = $this->db->prepare("SELECT * FROM provincias where deleted_at is null");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function distrito($id)
+    {
+        $query = $this->db->prepare("SELECT * FROM distritos where provincia_id =$id and deleted_at is null");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function programaEstudios()
+    {
+        $query = $this->db->prepare("SELECT * FROM areas where deleted_at is null");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function GradoAcademico()
+    {
+        $query = $this->db->prepare("SELECT * FROM grado_academicos where deleted_at is null");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function RegistrarCuentaAlumno($datos)
+    {
+        $query = $this->db->prepare('INSERT INTO alumnos(nombres, apellidos, dni, tipo_documento, telefono, email, fecha_nacimiento, provincia_id, distrito_id, area_id, usuario_alumno, password, aprobado, egresado) 
+        VALUES ("'.$datos["nombres"].'", 
+                "'.$datos["apellidos"].'", 
+                "'.$datos["dni"].'", 
+                1, 
+                "'.$datos["telefono"].'",
+                "'.$datos['email'].'",
+                "'.$datos['nacimiento'].'",
+                "'.$datos['provincia'].'",
+                "'.$datos['distrito'].'",
+                "'.$datos['programa_estudio'].'",
+                "'.$datos['dni'].'",
+                "'.$datos['password'].'",
+                1,
+                "'.$datos['grado_academico'].'")');
+        if($query->execute()){
+            return "ok";
+        }else{
+            return "error";          
+        } 
+    }
+
+    public function VerificarAlumnoRepetidos($dni)
+    {
+        $query = $this->db->prepare("SELECT * FROM alumnos where dni=$dni and deleted_at is null");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
 }

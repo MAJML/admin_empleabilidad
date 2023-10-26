@@ -5,7 +5,7 @@ function alumnosOnline()
 {
     $.ajax({
         dataType:"json",
-        url:'Inicio/alumnosOnline',
+        url: baseurl+'Inicio/alumnosOnline',
         success:function(response){
             $("#alumnos_online").html(response['conectados'])
 

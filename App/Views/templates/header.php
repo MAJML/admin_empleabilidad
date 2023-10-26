@@ -259,73 +259,6 @@ table {
                                                                         class="vertical-timeline-element-icon bounce-in"></span>
                                                                     <div
                                                                         class="vertical-timeline-element-content bounce-in">
-                                                                        <h4 class="timeline-title">Something not
-                                                                            important
-                                                                            <div
-                                                                                class="avatar-wrapper mt-2 avatar-wrapper-overlap">
-                                                                                <div
-                                                                                    class="avatar-icon-wrapper avatar-icon-sm">
-                                                                                    <div class="avatar-icon">
-                                                                                        <img src="assets/images/avatars/1.jpg"
-                                                                                            alt>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="avatar-icon-wrapper avatar-icon-sm">
-                                                                                    <div class="avatar-icon">
-                                                                                        <img src="assets/images/avatars/2.jpg"
-                                                                                            alt>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="avatar-icon-wrapper avatar-icon-sm">
-                                                                                    <div class="avatar-icon">
-                                                                                        <img src="assets/images/avatars/3.jpg"
-                                                                                            alt>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="avatar-icon-wrapper avatar-icon-sm">
-                                                                                    <div class="avatar-icon">
-                                                                                        <img src="assets/images/avatars/4.jpg"
-                                                                                            alt>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="avatar-icon-wrapper avatar-icon-sm">
-                                                                                    <div class="avatar-icon">
-                                                                                        <img src="assets/images/avatars/5.jpg"
-                                                                                            alt>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="avatar-icon-wrapper avatar-icon-sm">
-                                                                                    <div class="avatar-icon">
-                                                                                        <img src="assets/images/avatars/9.jpg"
-                                                                                            alt>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="avatar-icon-wrapper avatar-icon-sm">
-                                                                                    <div class="avatar-icon">
-                                                                                        <img src="assets/images/avatars/7.jpg"
-                                                                                            alt>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="avatar-icon-wrapper avatar-icon-sm">
-                                                                                    <div class="avatar-icon">
-                                                                                        <img src="assets/images/avatars/8.jpg"
-                                                                                            alt>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="avatar-icon-wrapper avatar-icon-sm avatar-icon-add">
-                                                                                    <div class="avatar-icon"><i>+</i>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </h4>
                                                                         <span
                                                                             class="vertical-timeline-element-date"></span>
                                                                     </div>
@@ -606,7 +539,7 @@ table {
                                 <div class="dropdown-menu-header">
                                     <div class="dropdown-menu-header-inner bg-premium-dark">
                                         <div class="menu-header-image"
-                                            style="background-image: url('assets/images/dropdown-header/city2.jpg');">
+                                            style="background-image: url('<?= $baseUrl ?>assets/images/dropdown-header/city2.jpg');">
                                         </div>
                                         <div class="menu-header-content text-white">
                                             <h5 class="menu-header-title">Alumnos Conectados</h5>

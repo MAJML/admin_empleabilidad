@@ -38,7 +38,42 @@ class BR_estudiantes
 
     public function crearCuenta()
     {
-        View::render(["registro/estudiantes"]);
+        $departamento = $this->estudiante->departamento();
+        $programaEstudios = $this->estudiante->programaEstudios();
+        $GradoAcademico = $this->estudiante->GradoAcademico();
+        View::render(["registro/estudiantes"],['departamento' => $departamento, 'programaEstudios' => $programaEstudios, 'GradoAcademico' => $GradoAcademico]);
     }
 
+    public function consultarDistrito()
+    {
+        $id = $_POST["id"];
+        $respuesta = $this->estudiante->distrito($id);
+        echo json_encode($respuesta);
+    }
+
+    public function CrearCuentaAlumno()
+    {
+        $datos = array(
+            'nombres'        =>  $_POST['nombre'],
+            'apellidos'      =>  $_POST['apellido'],
+            'dni'            =>  $_POST['dni'],
+            'telefono'       =>  $_POST['telefono'],
+            'email'          =>  $_POST['correo'],
+            'nacimiento'     =>  $_POST['nacimiento'],
+            'provincia'      =>  $_POST['departamento'],
+            'distrito'       =>  $_POST['distrito'],
+            'password'       =>  password_hash($_POST['dni'], PASSWORD_DEFAULT),
+            'programa_estudio' => $_POST['programa_estudio'],
+            'grado_academico'  => $_POST['grado_academico']
+        );
+        $respuesta = $this->estudiante->RegistrarCuentaAlumno($datos);
+        echo json_encode($respuesta);
+    }
+
+    public function verificarAlumno()
+    {
+        $dni = $_POST['dni'];
+        $respuesta = $this->estudiante->VerificarAlumnoRepetidos($dni);
+        echo json_encode($respuesta);
+    }
 }
