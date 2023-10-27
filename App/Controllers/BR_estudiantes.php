@@ -15,6 +15,7 @@ class BR_estudiantes
 {
     public function __construct()
     {
+        date_default_timezone_set('America/Lima');
         session_start();
         if(empty($_SESSION['username'])){
             session_destroy();
@@ -67,6 +68,12 @@ class BR_estudiantes
             'grado_academico'  => $_POST['grado_academico']
         );
         $respuesta = $this->estudiante->RegistrarCuentaAlumno($datos);
+        echo json_encode($respuesta);
+    }
+
+    public function ListaCuentaCreadas()
+    {
+        $respuesta = $this->estudiante->ConsultarCuentasCreadas();
         echo json_encode($respuesta);
     }
 

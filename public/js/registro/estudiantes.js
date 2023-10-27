@@ -1,6 +1,7 @@
 console.log("esto es la consola registro estudiantes");
 
 busquedaAlumno()
+ConsultarListaCuentasCreadas()
 
 $(document).on('submit', "#form_crear_alumno", function(event){
     event.preventDefault();
@@ -13,6 +14,7 @@ $(document).on('submit', "#form_crear_alumno", function(event){
         success:function(response){
             /* console.log("esto es la consola crear usuario alumno : ", response) */
             if(response == "ok"){
+                ConsultarListaCuentasCreadas()
                 $("#form_crear_alumno").trigger("reset");
                 $("#distrito option").remove();
                 $("#form_crear_alumno #campos_formulario").prop('hidden', true)
@@ -76,6 +78,50 @@ $("#departamento").change(function(){
         }
     });
 });
+
+
+function ConsultarListaCuentasCreadas()
+{
+    $.ajax({
+        dataType:"json",
+        url: baseurl+'BR_estudiantes/ListaCuentaCreadas',
+        beforeSend:function(){
+            $("#lista_cuentas_creadas li").remove()
+        },
+        success:function(response){
+          /* console.log("response lista cuenta creadas : ", response); */
+          for (let i = 0; i < response.length; i++) {
+             hora = new Date(response[i]['created_at'])
+            if(response[i]['grado'] == 'Estudiante'){
+                var alert = '<div class="badge badge-success ml-2">'+response[i]['grado']+'</div>';
+            }else if (response[i]['grado'] == 'Egresado'){
+                var alert = '<div class="badge badge-info ml-2">'+response[i]['grado']+'</div>';
+            }else if(response[i]['grado'] == 'Titulado'){
+                var alert = '<div class="badge badge-warning ml-2">'+response[i]['grado']+'</div>';
+            }
+            html = '<li class="list-group-item">';
+            html += '<div class="todo-indicator bg-success"></div>';
+            html += '<div class="widget-content p-0">';
+            html += '<div class="widget-content-wrapper">';
+            html += '<div class="widget-content-left">';
+            html += '<div class="widget-heading">'+response[i]['apellidos'];
+            html += alert;
+            html += '</div>';
+            html += '<div class="widget-subheading"><i>'+response[i]['areas']+' | '+response[i]['distritos'].toUpperCase()+'</i></div>';
+            html += '</div>';
+            html += '<div class="widget-content-right">';
+            html += '<div class="widget-subheading"><i>hoy a las '+hora.getHours()+':'+hora.getMinutes()+'</i></div>';
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+            html += '</li>';
+            $("#lista_cuentas_creadas").append(html)
+          }
+          
+        }
+    });
+}
+
 
 function busquedaAlumno()
 {

@@ -123,40 +123,9 @@
                 <div class="col-md-12 col-lg-4">
                     <div class="main-card mb-3 card">
                         <div class="card-header">Lista de Cuentas Creadas Recientemente</div>
-                        <ul class="todo-list-wrapper list-group list-group-flush">
-<!--                             <li class="list-group-item">
-                                <div class="todo-indicator bg-warning"></div>
-                                <div class="widget-content p-0">
-                                    <div class="widget-content-wrapper">
-                                        <div class="widget-content-left mr-2">
-                                            <div class="custom-checkbox custom-control">
-                                                <input type="checkbox" id="exampleCustomCheckbox12"
-                                                    class="custom-control-input">
-                                                <label class="custom-control-label"
-                                                    for="exampleCustomCheckbox12">&nbsp;</label>
-                                            </div>
-                                        </div>
-                                        <div class="widget-content-left">
-                                            <div class="widget-heading">Wash the car
-                                                <div class="badge badge-danger ml-2">Rejected</div>
-                                            </div>
-                                            <div class="widget-subheading"><i>Written by Bob</i></div>
-                                        </div>
-                                        <div class="widget-content-right widget-content-actions">
-                                            <button class="border-0 btn-transition btn btn-outline-success">
-                                                <i class="fa fa-check"></i>
-                                            </button>
-                                            <button class="border-0 btn-transition btn btn-outline-danger">
-                                                <i class="fa fa-trash-alt"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> -->
-                        </ul>
+                            <ul class="todo-list-wrapper list-group list-group-flush scroll-area-lg" id="lista_cuentas_creadas">
+                            </ul>
                         <div class="d-block text-right card-footer">
-<!--                             <button class="mr-2 btn btn-link btn-sm">Cancelar</button>
-                            <button class="btn btn-success btn-lg">Ok</button> -->
                         </div>
                     </div>
                 </div>

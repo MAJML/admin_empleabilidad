@@ -105,4 +105,25 @@ class BR_estudiantesModel extends Model
         return $query->fetchAll();
     }
 
+    public function ConsultarCuentasCreadas()
+    {
+        $query = $this->db->prepare("SELECT 
+        AL.apellidos,
+        AL.dni,
+        AL.telefono,
+        AL.email,
+        AR.nombre as 'areas',
+        D.nombre as 'distritos',
+        GA.grado_estado as 'grado',
+        AL.created_at
+        from alumnos AL
+        inner join areas AR on AR.id=AL.area_id
+        inner join distritos D on D.id=AL.distrito_id 
+        inner join grado_academicos GA on GA.id=AL.egresado
+        where date(AL.created_at) = date(NOW()) and AL.deleted_at is null 
+        order by AL.created_at desc");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
 }
