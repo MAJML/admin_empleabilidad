@@ -44,4 +44,84 @@ class BR_empleadoresModel extends Model
         return $query->fetchAll();
     }
 
+    public function departamento()
+    {
+        $query = $this->db->prepare("SELECT * FROM provincias where deleted_at is null");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function distrito($id)
+    {
+        $query = $this->db->prepare("SELECT * FROM distritos where provincia_id =$id and deleted_at is null");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function ActividadesEconomicas()
+    {
+        $query = $this->db->prepare("SELECT * FROM actividad_economicas where deleted_at is null order by descripcion");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function VerificarEmpleadorRepetido($ruc)
+    {
+        $query = $this->db->prepare("SELECT * FROM empresas where ruc=$ruc and deleted_at is null");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function CrearCuentaEmpleador($datos)
+    {
+        $query = $this->db->prepare('INSERT INTO empresas(ruc, 
+                                                          razon_social,
+                                                          nombre_comercial, 
+                                                          name_comercio, 
+                                                          actividad_economica_empresa, 
+                                                          provincia_id, 
+                                                          distrito_id, 
+                                                          direccion, 
+                                                          referencia, 
+                                                          telefono, 
+                                                          email, 
+                                                          usuario_empresa, 
+                                                          password,
+                                                          nombre_contacto,
+                                                          cargo_contacto,
+                                                          telefono_contacto,
+                                                          email_contacto,
+                                                          aprobado,
+                                                          tipo_persona,
+                                                          nombre_paciente,
+                                                          enfermedad_paciente,
+                                                          online)                                                                                                                     
+        VALUES ("'.$datos["ruc"].'",
+                "'.$datos["razon_social"].'",  
+                "'.$datos["nombre_comercial"].'", 
+                "'.$datos["nombre_empresa"].'", 
+                "'.$datos['actividad_economica'].'", 
+                "'.$datos["ciudad"].'",
+                "'.$datos['distrito'].'",
+                "'.$datos['direccion'].'",
+                "'.$datos['referencia'].'",
+                "'.$datos['telefono_empresa'].'",
+                "'.$datos['correo'].'",
+                "'.$datos['ruc'].'",
+                "'.$datos['password'].'",
+                "'.$datos['nombre_contacto'].'",
+                "'.$datos['cargo_contacto'].'",
+                "'.$datos['telefono_contacto'].'",
+                "'.$datos['correo_contacto'].'",
+                0,
+                "'.$datos['tipo_persona'].'",
+                "'.$datos['nombre_paciente'].'",
+                "'.$datos['enfermedad_paciente'].'",
+                0)');
+        if($query->execute()){
+            return "ok";
+        }else{
+            return "error";          
+        } 
+    }
 }

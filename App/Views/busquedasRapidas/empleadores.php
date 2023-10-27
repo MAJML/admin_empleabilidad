@@ -43,23 +43,18 @@ table.dataTable td {
     <div class="card-body">
         <div class="row">
             <div class="col-12 d-flex flex-wrap justify-content-sm-center justify-content-lg-start justify-content-center w-100 p-1">
-                <form action="" class="col-12 d-flex flex-wrap" role="form" method="post" id="">
+                <form action="" class="d-flex flex-wrap col-12 justify-content-between" role="form" method="post" id="">
 
-                    <div class="mb-2 margen-right col-lg-5 col-md-6 col-sm-12">
+                    <div class="mb-2 col-lg-5 col-md-6 col-sm-12">
                         <input type="search" id="buscarEmpleador" class="form-control form-control-sm fecha1" name='' placeholder="Buscar Empleador por ruc/dni o por nombre Comercial" required>
                     </div>
 
-<!--                     <div class="mb-1 margen-right col-lg-3 col-md-6 col-sm-12">
-                        <div>
-                            <a href="javascript:void(0)" class="w-100 btn-square btn btn-success ecxel mb-2"
-                                id="btnEcxel">
-                                <i class="fa-solid fa-file-excel"></i>
-                                Exportar Excel
-                            </a>
-                        </div>
-                    </div> -->
+                    <div class="col-lg-2">
+                        <a href="BR_empleadores/crearCuenta" class="btn btn-outline-primary"><i class="fa fa-plus" aria-hidden="true"></i> Crear cuenta al Empleador</a>
+                    </div>
 
                 </form>
+
             </div>
         </div>
     </div>
