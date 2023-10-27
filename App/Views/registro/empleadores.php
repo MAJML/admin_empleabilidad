@@ -185,21 +185,6 @@
                                         </form>  
                                     </div>
 
-
-<!--                                     <div class="tab-pane" id="SectPersonaNatural" role="tabpanel">
-                                        <p>Like Aldus PageMaker including versions of Lorem. It has survived
-                                            not only five centuries, but also the leap into electronic
-                                            typesetting, remaining
-                                            essentially unchanged. </p>
-                                    </div>
-                                    <div class="tab-pane" id="SectPersonaNaturalNegocio" role="tabpanel">
-                                        <p>Lorem Ipsum has been the industry's standard dummy text ever
-                                            since the 1500s, when an unknown printer took a galley of type
-                                            and scrambled it to make a
-                                            type specimen book. It has
-                                            survived not only five centuries, but also the leap into
-                                            electronic typesetting, remaining essentially unchanged. </p>
-                                    </div> -->
                                 </div>
                             </div>                        
 
@@ -212,11 +197,9 @@
                 <div class="col-md-12 col-lg-4">
                     <div class="main-card mb-3 card">
                         <div class="card-header">Lista de Cuentas Creadas Recientemente</div>
-                        <ul class="todo-list-wrapper list-group list-group-flush">
-                        </ul>
+                            <ul class="todo-list-wrapper list-group list-group-flush" id="lista_cuentas_creadas">
+                            </ul>
                         <div class="d-block text-right card-footer">
-<!--                             <button class="mr-2 btn btn-link btn-sm">Cancelar</button>
-                            <button class="btn btn-success btn-lg">Ok</button> -->
                         </div>
                     </div>
                 </div>

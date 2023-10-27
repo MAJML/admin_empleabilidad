@@ -68,6 +68,12 @@ class BR_empleadores
         }
     }
 
+    public function ListaCuentaCreadas()
+    {
+        $respuesta = $this->model->ConsultarCuentasCreadas();
+        echo json_encode($respuesta);
+    }
+
     public function BuscarEmpleadorDni()
     {
         $curl = curl_init();

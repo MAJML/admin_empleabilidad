@@ -124,4 +124,22 @@ class BR_empleadoresModel extends Model
             return "error";          
         } 
     }
+
+    public function ConsultarCuentasCreadas()
+    {
+        $query = $this->db->prepare("SELECT 
+        EM.ruc,
+        EM.nombre_comercial,
+        EM.created_at,
+        D.nombre as 'distritos',
+        TP.tipo as 'tipo_persona'
+        from empresas EM
+        inner join distritos D on D.id=EM.distrito_id 
+        inner join tipo_personas TP on TP.id=EM.tipo_persona
+        where date(EM.created_at) = date(NOW()) and EM.deleted_at is null 
+        order by EM.created_at desc");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
 }

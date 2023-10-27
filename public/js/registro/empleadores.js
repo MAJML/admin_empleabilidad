@@ -2,6 +2,7 @@ console.log("esto es la consola registro empleadores");
 
 busquedaRucEmpleadores()
 busquedaDniEmpleador()
+ConsultarListaCuentasCreadas()
 
 $(document).on('submit', "#form_crear_personaJuridica", function(event){
     event.preventDefault();
@@ -14,6 +15,7 @@ $(document).on('submit', "#form_crear_personaJuridica", function(event){
         success:function(response){
             console.log("esto es la consola crear BR_empleadores  : ", response)
             if(response == "ok"){
+                ConsultarListaCuentasCreadas()
                 $("#form_crear_personaJuridica").trigger("reset");
                 $("#distrito option").remove();
                 $("#form_crear_personaJuridica #campos_formulario_personaJuridica").prop('hidden', true)
@@ -153,6 +155,49 @@ $("#ciudad").change(function(){
         }
     });
 });
+
+
+function ConsultarListaCuentasCreadas()
+{
+    $.ajax({
+        dataType:"json",
+        url: baseurl+'BR_empleadores/ListaCuentaCreadas',
+        beforeSend:function(){
+            $("#lista_cuentas_creadas li").remove()
+        },
+        success:function(response){
+          /* console.log("response lista cuenta creadas empleadores : ", response); */
+          for (let i = 0; i < response.length; i++) {
+            hora = new Date(response[i]['created_at'])
+
+            if(response[i]['tipo_persona'] == 'Persona Juridica'){
+                var alert = '<div class="badge badge-success ml-2">'+response[i]['tipo_persona']+'</div>';
+            }else if (response[i]['tipo_persona'] == 'Persona Natural'){
+                var alert = '<div class="badge badge-info ml-2">'+response[i]['tipo_persona']+'</div>';
+            }else if(response[i]['tipo_persona'] == 'Persona Natural con Empresa'){
+                var alert = '<div class="badge badge-warning ml-2">'+response[i]['tipo_persona']+'</div>';
+            }
+            html = '<li class="list-group-item">';
+            html += '<div class="todo-indicator bg-success"></div>';
+            html += '<div class="widget-content p-0">';
+            html += '<div class="widget-content-wrapper">';
+            html += '<div class="widget-content-left">';
+            html += '<div class="widget-heading">'+response[i]['ruc'];
+            html += alert;
+            html += '</div>';
+            html += '<div class="widget-subheading"><i>'+response[i]['nombre_comercial']+'</i></div>';
+            html += '</div>';
+            html += '<div class="widget-content-right">';
+            html += '<div class="widget-subheading"><i>hoy a las '+hora.getHours()+':'+hora.getMinutes()+'</i></div>';
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+            html += '</li>';
+            $("#lista_cuentas_creadas").append(html)
+          }
+        }
+    });
+}
 
 function busquedaDniEmpleador()
 {
