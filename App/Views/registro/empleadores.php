@@ -129,7 +129,7 @@
                                                     <div class="col-md-6" id="input_correoEmpresa">
                                                         <div class="position-relative form-group">
                                                             <label for="" class="form-label"><b>Correo Electrónico.</b></label>
-                                                            <input name="correo" id="correo" type="text" class="form-control form-control-sm">
+                                                            <input name="correo" id="correo" type="email" class="form-control form-control-sm">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
@@ -156,7 +156,7 @@
                                                     <div class="col-md-6">
                                                         <div class="position-relative form-group">
                                                             <label for="" class="form-label"><b>Correo Electrónico del Contácto.</b></label>
-                                                            <input name="correo_contacto" id="correo_contacto" type="text" class="form-control form-control-sm" required>
+                                                            <input name="correo_contacto" id="correo_contacto" type="email" class="form-control form-control-sm" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12" id="titulo_dataPaciente" hidden>

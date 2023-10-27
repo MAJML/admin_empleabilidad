@@ -59,7 +59,7 @@
                                         <div class="col-md-6">
                                             <div class="position-relative form-group">
                                                 <label for="" class="form-label"><b>Correo Electrónico.</b></label>
-                                                <input name="correo" id="correo" type="text" class="form-control form-control-sm" required readonly>
+                                                <input name="correo" id="correo" type="email" class="form-control form-control-sm" required readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
