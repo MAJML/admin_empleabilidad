@@ -54,7 +54,7 @@
                                                     <div class="col-md-5">
                                                         <div class="position-relative form-group">
                                                             <label for="" class="form-label"><b class="text-danger" id="validationRuc" >Ingrese su RUC para autocompletar los datos.</b></label>
-                                                            <input name="" type="text" id="dni" minlength="8" maxlength="9" class="form-control form-control-sm buscador_dni" hidden required>
+                                                            <input name="" type="text" id="dni" minlength="8" maxlength="9" class="form-control form-control-sm buscador_dni" hidden>
                                                             <input name="ruc" type="text" id="ruc" minlength="9" maxlength="15" class="form-control form-control-sm buscador_ruc" required>
                                                         </div>
                                                     </div>
