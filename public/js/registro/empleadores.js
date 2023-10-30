@@ -98,7 +98,7 @@ $("#SectPersonaJuridica").on("click", function(){
     $("#input_razonSocial").prop('hidden', false).prop('required', true)
     $("#input_actividadEconomica").prop('hidden', false).prop('required', true)
     $("#input_telefonoEmpresa").prop('hidden', false).prop('required', true)
-    $("#input_correoEmpresa").prop('hidden', false).prop('required', true)
+    $("#input_correoEmpresa").prop('hidden', false).prop('required', false)
     $("#input_nombresContacto").prop('hidden', false).prop('required', true)
     $("#input_cargoContacto").prop('hidden', false).prop('required', true)
 

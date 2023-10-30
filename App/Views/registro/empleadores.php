@@ -150,13 +150,13 @@
                                                     <div class="col-md-6">
                                                         <div class="position-relative form-group">
                                                             <label for="" class="form-label"><b>Teléfono Contacto.</b></label>
-                                                            <input name="telefono_contacto" id="telefono_contacto" type="text" class="form-control form-control-sm" required>
+                                                            <input name="telefono_contacto" id="telefono_contacto" type="text" class="form-control form-control-sm">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="position-relative form-group">
                                                             <label for="" class="form-label"><b>Correo Electrónico del Contácto.</b></label>
-                                                            <input name="correo_contacto" id="correo_contacto" type="email" class="form-control form-control-sm" required>
+                                                            <input name="correo_contacto" id="correo_contacto" type="email" class="form-control form-control-sm">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12" id="titulo_dataPaciente" hidden>
