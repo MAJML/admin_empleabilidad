@@ -614,7 +614,7 @@ table {
                                                                 </div>
                                                                 <div class="widget-content-right mr-2">
                                                                     <a class="btn-pill btn-shadow btn-shine btn btn-focus"
-                                                                        href="Home/cerrar_sesion">Salir</a>
+                                                                        href="<?= $baseUrl ?>Home/cerrar_sesion">Salir</a>
                                                                 </div>
                                                             </div>
                                                         </div>

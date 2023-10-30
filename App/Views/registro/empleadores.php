@@ -197,7 +197,7 @@
                 <div class="col-md-12 col-lg-4">
                     <div class="main-card mb-3 card">
                         <div class="card-header">Lista de Cuentas Creadas Recientemente</div>
-                            <ul class="todo-list-wrapper list-group list-group-flush" id="lista_cuentas_creadas">
+                            <ul class="todo-list-wrapper list-group list-group-flush scroll-area-lg" id="lista_cuentas_creadas">
                             </ul>
                         <div class="d-block text-right card-footer">
                         </div>
