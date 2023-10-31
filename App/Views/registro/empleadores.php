@@ -79,10 +79,10 @@
                                                     <div class="col-md-6" id="input_actividadEconomica">
                                                         <div class="position-relative form-group">
                                                             <label for="" class="form-label"><b>Actividad Económica de la Empresa.</b></label>
-                                                            <select name="actividad_economica" id="actividad_economica" class="form-control form-control-sm">
+                                                            <select name="actividad_economica" id="actividad_economica" class="form-control form-control-sm js-example-basic-single">
                                                                 <option value="" hidden>-- Seleccione --</option>
                                                                 <?php foreach ($actividadesEconomicas as $row): ?>
-                                                                    <option value="<?= $row->id ?>"><?= $row->descripcion ?></option>
+                                                                    <option value="<?= $row->id ?>"><?= $row->codigo.' | '.$row->descripcion ?></option>
                                                                 <?php endforeach; ?>
                                                             </select>
                                                         </div>
@@ -216,3 +216,8 @@
 <!-- APP JS -->
 <script type="text/javascript" src="<?= $baseUrl ?>assets/scripts/main.d810cf0ae7f39f28f336.js"></script>
 <script src="../js/registro/empleadores.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+</script>
