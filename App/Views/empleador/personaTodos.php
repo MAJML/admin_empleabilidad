@@ -132,79 +132,87 @@ table.dataTable td {
 
 <!-- ESTO ES EL MODAL DE VER DATOS -->
 <div id="modal_ver_data" style="display:none;width:1400px;">
-    <h5><b>DATOS DE LA EMPRESA</b></h5>
-    <div class='row'>
-        <div class="col-4 mb-3">
-            <label class="form-label">RUC</label>
-            <input type="text" id='ruc' class="form-control form-control-sm" readonly>
+    <h5><b>DATOS DE LA EMPRESAss</b></h5>
+    <form action="" method="post" id="form_modificar_empleador_contacto">
+        <div class='row'>
+            <div class="col-4 mb-3">
+                <label class="form-label">RUC</label>
+                <input type="text" id='ruc' class="form-control form-control-sm" readonly>
+            </div>
+            <div class="col-4 mb-3">
+                <label class="form-label">RAZON SOCIAL</label>
+                <input type="text" id='razon_social' class="form-control form-control-sm" readonly>
+            </div>
+            <div class="col-4 mb-3">
+                <label class="form-label">NOMBRE EMPRESA</label>
+                <input type="text" id='nombre_empresa' class="form-control form-control-sm" readonly>
+            </div>
         </div>
-        <div class="col-4 mb-3">
-            <label class="form-label">RAZON SOCIAL</label>
-            <input type="text" id='razon_social' class="form-control form-control-sm" readonly>
+        <div class='row'>
+            <div class="col-6 mb-3">
+                <label class="form-label">CIUDAD</label>
+                <input type="text" id='ciudad' class="form-control form-control-sm" readonly>
+            </div>
+            <div class="col-6 mb-3">
+                <label class="form-label">DISTRITO</label>
+                <input type="text" id='distrito' class="form-control form-control-sm" readonly>
+            </div>
         </div>
-        <div class="col-4 mb-3">
-            <label class="form-label">NOMBRE EMPRESA</label>
-            <input type="text" id='nombre_empresa' class="form-control form-control-sm" readonly>
+        <div class='row'>
+            <div class="col-8 mb-3">
+                <label class="form-label">DIRECCION</label>
+                <input type="text" id='direcion' class="form-control form-control-sm" readonly>
+            </div>
+            <div class="col-4 mb-3">
+                <label class="form-label">TELEFONO</label>
+                <input type="text" id='telefono' class="form-control form-control-sm" readonly>
+            </div>
         </div>
-    </div>
-    <div class='row'>
-        <div class="col-6 mb-3">
-            <label class="form-label">CIUDAD</label>
-            <input type="text" id='ciudad' class="form-control form-control-sm" readonly>
+        <div class='row'>
+            <div class="col-6 mb-3">
+                <label class="form-label">E-MAIL</label>
+                <input type="text" id='e-mail' class="form-control form-control-sm" readonly>
+            </div>
         </div>
-        <div class="col-6 mb-3">
-            <label class="form-label">DISTRITO</label>
-            <input type="text" id='distrito' class="form-control form-control-sm" readonly>
+        <hr>
+        <div class='row'>
+            <div class="col-4 mb-3">
+                <label class="form-label">NOMRE CONTACTO</label>
+                <input type="text" id='nombre_contacto' name="nombre_contacto" class="form-control form-control-sm" readonly>
+            </div>
+            <div class="col-4 mb-3">
+                <label class="form-label">TELEFONO CONTACTO</label>
+                <input type="text" id='telefono_contacto' name="telefono_contacto" class="form-control form-control-sm" readonly>
+            </div>
+            <div class="col-4 mb-3">
+                <label class="form-label">CARGO CONTACTO</label>
+                <input type="text" id='cargo_contacto' name="cargo_contacto" class="form-control form-control-sm" readonly>
+            </div>
         </div>
-    </div>
-    <div class='row'>
-        <div class="col-8 mb-3">
-            <label class="form-label">DIRECCION</label>
-            <input type="text" id='direcion' class="form-control form-control-sm" readonly>
+        <div class='row'>
+            <div class="col-4 mb-3">
+                <label class="form-label">E-MAIL CONTACTO</label>
+                <input type="text" id='e-mail_contacto' name="email_contacto" class="form-control form-control-sm" readonly>
+            </div>
         </div>
-        <div class="col-4 mb-3">
-            <label class="form-label">TELEFONO</label>
-            <input type="text" id='telefono' class="form-control form-control-sm" readonly>
+        <hr>
+        <div class="row">
+            <div class="col-6 mb-3">
+                <label class="form-label">NOMBRE COMPLETO DEL PACIENTE</label>
+                <input type="text" id='nombre_paciente' name="nombre_paciente" class="form-control form-control-sm" readonly>
+            </div>
+            <div class="col-6 mb-3">
+                <label class="form-label">ENFERMEDAD DEL PACIENTE</label>
+                <input type="text" id='enfermedad_paciente' name="enfermedad_paciente" class="form-control form-control-sm" readonly>
+            </div>
         </div>
-    </div>
-    <div class='row'>
-        <div class="col-6 mb-3">
-            <label class="form-label">E-MAIL</label>
-            <input type="text" id='e-mail' class="form-control form-control-sm" readonly>
+        <div class="row d-flex">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-success">Modificar</button>
+            </div>
         </div>
-    </div>
-    <hr>
-    <div class='row'>
-        <div class="col-4 mb-3">
-            <label class="form-label">NOMRE CONTACTO</label>
-            <input type="text" id='nombre_contacto' class="form-control form-control-sm" readonly>
-        </div>
-        <div class="col-4 mb-3">
-            <label class="form-label">TELEFONO CONTACTO</label>
-            <input type="text" id='telefono_contacto' class="form-control form-control-sm" readonly>
-        </div>
-        <div class="col-4 mb-3">
-            <label class="form-label">CARGO CONTACTO</label>
-            <input type="text" id='cargo_contacto' class="form-control form-control-sm" readonly>
-        </div>
-    </div>
-    <div class='row'>
-        <div class="col-4 mb-3">
-            <label class="form-label">E-MAIL CONTACTO</label>
-            <input type="text" id='e-mail_contacto' class="form-control form-control-sm" readonly>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-6 mb-3">
-            <label class="form-label">NOMBRE COMPLETO DEL PACIENTE</label>
-            <input type="text" id='nombre_paciente' class="form-control form-control-sm" readonly>
-        </div>
-        <div class="col-6 mb-3">
-            <label class="form-label">ENFERMEDAD DEL PACIENTE</label>
-            <input type="text" id='enfermedad_paciente' class="form-control form-control-sm" readonly>
-        </div>
-    </div>
+    </form>
+    
 
 </div>
 

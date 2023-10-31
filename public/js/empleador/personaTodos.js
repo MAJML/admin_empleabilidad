@@ -72,6 +72,112 @@ $(document).ready(function() {
     });
     /* END BUSQUEDA RAPIDA */
 
+    $(document).on('submit', "#ConsultaPJ", function(event){
+		event.preventDefault();
+		var data = $(this).serialize();
+
+        var f1 = $(".fecha1").val();
+        var f2 = $(".fecha2").val();
+        var validacion = $(".validacion").val();
+        var tipoPersona = $(".tipoPersona").val();
+        $(".ecxel").attr("href", 'PersonaTodos/EsportarExcel/'+ f1 + '/' + f2 + '/' + validacion + '/' + tipoPersona)
+        $(".table_dataPJ tbody").empty();
+		$.ajax({
+			type:"POST",
+			dataType:"json",
+			url:'PersonaTodos/ConsultaDataPorFecha',
+			data:data,
+            beforeSend: function() {
+                $(".cargador").html(`
+                <td colspan=10>
+                    <div class="container-tablita">
+                        <div class="cargando">
+                            <div class="pelotas"></div>
+                            <div class="pelotas"></div>
+                            <div class="pelotas"></div>
+                            <span class="texto-cargando">Cargando...</span>
+                        </div>
+                    </div>                
+                </td>`)
+            },
+			success:function(response){
+                /* console.log('esto es la rpta : ', response) */
+                var tabla = ""; var fila=1;
+                var oTable = $('.table_dataPJ').dataTable();
+                oTable.fnClearTable();
+                for(var i = 0; i < response.length; i++) {
+                    if(response[i]['aprobado'] == 1){
+                        var iconValidacion = '<a href="javascript:void(0)" EstadoEmpleador="0" idEmpleador="'+response[i]['id']+'" class="btn_estado_empleador btn btn-outline-primary btn-sm">Activo</a>'
+                    }else{
+                        var iconValidacion = '<a href="javascript:void(0)" EstadoEmpleador="1" idEmpleador="'+response[i]['id']+'" class="btn_estado_empleador btn btn-outline-danger btn-sm">Inactivo</a>'
+                    }
+                    var iconVer = '<a href="javascript:void(0)" onclick=verData("'+ response[i]['id'] +'") class="btn btn-outline-success mx-1" data-fancybox data-src="#modal_ver_data" data-width="3000" data-height="400"><i class="fa-solid fa-eye"></i></a>';
+                    
+                    if(response[i]["tipo_persona"] == 2){
+                        var iconEmail = '<a href="javascript:void(0)" class="btn btn-primary" onclick=EnviarEmail("'+ response[i]['email_contacto'] +'")><i class="fa-solid fa-envelope"></i></a>';
+                    }else{
+                        var iconEmail = '<a href="javascript:void(0)" class="btn btn-primary" onclick=EnviarEmail("'+ response[i]['email'] +'")><i class="fa-solid fa-envelope"></i></a>';
+                    }
+
+                    var iconDelete = '<a href="javascript:void(0)" onclick=AlertaEliminar("'+ response[i]['id'] +'") class="btn btn-outline-danger" ><i class="fa-solid fa-trash"></i></a>';
+                    var contenIcon = '<div class="d-flex">'+ iconVer + iconDelete +'</div>'
+                    oTable.fnAddData([ fila, 
+                                       response[i]['created_at'], 
+                                       response[i]['ruc'], 
+                                       response[i]['razon_social'], 
+                                       response[i]['nombre_comercial'],
+                                      /*  response[i]["nombre_distritos"], */
+                                       response[i]['nombre_contacto']+' '+response[i]['apellido_contacto'],
+                                       response[i]['telefono_contacto'], 
+                                       response[i]['email_contacto'],
+                                       iconValidacion,
+                                       contenIcon
+                                    ]);
+                    fila++;
+                }
+
+
+			},error:function(){
+			console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
+			}
+		});
+	});
+
+    /* MODIFICAR EMPLEADOR */
+    $(document).on('submit', "#form_modificar_empleador_contacto", function(event){
+		event.preventDefault();
+		var data = $(this).serialize();
+		$.ajax({
+			type:"POST",
+			dataType:"json",
+			url:'PersonaTodos/modificarEmpleador',
+			data:data,
+			success:function(response){
+                /* console.log('esto es la rpta de modificar empleadores : ', response) */
+                if(response == 'ok'){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Modificado correctamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    $(".is-close-btn").click()
+                }else{
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Intentelo mas tarde',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+
+			}
+		});
+	});
+
+
 	$(document).on('submit', "#ConsultaPJ", function(event){
 		event.preventDefault();
 		var data = $(this).serialize();
@@ -186,6 +292,7 @@ function verData(idData)
         url:'PersonaTodos/TraerDataPorID',
         data: {id:idData},
         success:function(response){
+            $('#id_empleador').val(response.id)
             $('#ruc').val(response.ruc)
             $('#razon_social').val(response.razon_social)
             $('#nombre_empresa').val(response.nombre_comercial)
