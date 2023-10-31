@@ -206,11 +206,6 @@ table.dataTable td {
                 <input type="text" id='enfermedad_paciente' name="enfermedad_paciente" class="form-control form-control-sm" readonly>
             </div>
         </div>
-        <div class="row d-flex">
-            <div class="col-md-4">
-                <button type="submit" class="btn btn-success">Modificar</button>
-            </div>
-        </div>
     </form>
     
 
