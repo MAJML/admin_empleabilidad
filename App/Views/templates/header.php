@@ -799,7 +799,7 @@ table {
                             </li>
                         </ul>
                         <div style="widht=10px;" class="text-center mt-5">
-                            <img src="<?= $baseUrl ?>img/morenitos_bailando.png" class="w-100" alt="">
+                            <!-- <img src="<?= $baseUrl ?>img/morenitos_bailando.png" class="w-100" alt=""> -->
                         </div>
                     </div>
                 </div>
