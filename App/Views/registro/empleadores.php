@@ -79,7 +79,7 @@
                                                     <div class="col-md-6" id="input_actividadEconomica">
                                                         <div class="position-relative form-group">
                                                             <label for="" class="form-label"><b>Actividad Económica de la Empresa.</b></label>
-                                                            <select name="actividad_economica" id="actividad_economica" class="form-control form-control-sm js-example-basic-single">
+                                                            <select name="actividad_economica" id="actividad_economica" class="form-control form-control-sm js-example-basic-single" required>
                                                                 <option value="" hidden>-- Seleccione --</option>
                                                                 <?php foreach ($actividadesEconomicas as $row): ?>
                                                                     <option value="<?= $row->id ?>"><?= $row->codigo.' | '.$row->descripcion ?></option>

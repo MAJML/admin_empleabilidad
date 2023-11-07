@@ -58,6 +58,7 @@ $(document).on('submit', "#form_crear_personaJuridica", function(event){
 });
 
 $("#SectPersonaNatural").on("click", function(){
+    $("#actividad_economica").prop('required', false)
     $("#form_crear_personaJuridica").trigger("reset");
     $("#ruc").prop('hidden', true).prop('required', false).prop('name','')
     $("#dni").prop('hidden', false).prop('required', true).prop('name','ruc')
@@ -83,6 +84,7 @@ $("#SectPersonaNatural").on("click", function(){
 })
 
 $("#SectPersonaJuridica").on("click", function(){
+    $("#actividad_economica").prop('required', true)
     $("#ruc").prop('hidden', false).prop('required', true).prop('name','ruc')
     $("#dni").prop('hidden', true).prop('required', false).prop('name','')
     $("#form_crear_personaJuridica").trigger("reset");
@@ -108,6 +110,7 @@ $("#SectPersonaJuridica").on("click", function(){
 })
 
 $("#SectPersonaNaturalNegocio").on("click", function(){
+    $("#actividad_economica").prop('required', true)
     $("#ruc").prop('hidden', false).prop('required', true).prop('name','ruc')
     $("#dni").prop('hidden', true).prop('required', false).prop('name','')
     $("#tipo_persona").val(3)
