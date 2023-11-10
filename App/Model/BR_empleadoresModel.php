@@ -7,6 +7,52 @@ use Core\Model;
 class BR_empleadoresModel extends Model
 {
 
+    public function TodosEmpleador()
+    {
+        $query = $this->db->prepare('SELECT 
+        E.id,
+        E.ruc,
+        E.razon_social,
+        E.nombre_comercial,
+        E.name_comercio,
+        E.actividad_economica_empresa,
+        E.direccion,
+        E.referencia,
+        E.telefono,
+        E.email,
+        E.usuario_empresa,
+        E.descripcion,
+        E.logo,
+        E.nombre_contacto,
+        E.apellido_contacto,
+        E.cargo_contacto,
+        E.telefono_contacto,
+        E.email_contacto,
+        E.aprobado,
+        E.tipo_persona,
+        E.nombre_paciente,
+        E.enfermedad_paciente,
+        E.evidencias_paciente,
+        E.created_at,
+       COALESCE( ( Select sum(COALESCE(vacantes,0))
+		  from avisos 
+          where empresa_id=E.id and deleted_at is null
+          and vacantes is not null
+          ),0) as VacantesTotales,
+       COALESCE( ( Select count(*)
+		  from avisos 
+          where empresa_id=E.id and deleted_at is null
+          ),0) as CantidadAvisos,
+		P.nombre AS "nombre_provincia",
+        D.nombre AS "nombre_distritos"
+        FROM empresas E 
+        LEFT JOIN provincias P ON P.id=E.provincia_id 
+        LEFT JOIN distritos D ON D.id=E.distrito_id
+        WHERE E.deleted_at IS NULL');
+        $query->execute();
+        return $query->fetchAll();
+    }
+    
     public function BusquedaRapidaEmpleador($valor)
     {
         $query = $this->db->prepare('SELECT 
@@ -34,7 +80,16 @@ class BR_empleadoresModel extends Model
         E.enfermedad_paciente,
         E.evidencias_paciente,
         E.created_at,
-        P.nombre AS "nombre_provincia",
+       COALESCE( ( Select sum(COALESCE(vacantes,0))
+		  from avisos 
+          where empresa_id=E.id and deleted_at is null
+          and vacantes is not null
+          ),0) as VacantesTotales,
+       COALESCE( ( Select count(*)
+		  from avisos 
+          where empresa_id=E.id and deleted_at is null
+          ),0) as CantidadAvisos,
+		P.nombre AS "nombre_provincia",
         D.nombre AS "nombre_distritos"
         FROM empresas E 
         LEFT JOIN provincias P ON P.id=E.provincia_id 

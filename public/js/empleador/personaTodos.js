@@ -26,6 +26,7 @@ $(document).ready(function() {
         var searchResults = $('#searchResults'); 
         inputbuscar.on('keyup', function() {
           var searchTerm = inputbuscar.val();
+          $("#btnEcxel-person").attr("href", 'BR_empleadores/EsportarExcel/'+ inputbuscar.val())
           $.ajax({
             url: 'BR_empleadores/BusquedaRapidaEmpleador',
             method: 'POST',
@@ -61,6 +62,8 @@ $(document).ready(function() {
                                        response[i]['nombre_contacto']+' '+response[i]['apellido_contacto'],
                                        response[i]['telefono_contacto'], 
                                        response[i]['email_contacto'],
+                                       response[i]['VacantesTotales'],
+                                       response[i]['CantidadAvisos'],
                                        iconValidacion,
                                        contenIcon
                                     ]);

@@ -45,10 +45,27 @@ table.dataTable td {
             <div class="col-12 d-flex flex-wrap justify-content-sm-center justify-content-lg-start justify-content-center w-100 p-1">
                 <form action="" class="d-flex flex-wrap col-12 justify-content-between" role="form" method="post" id="">
 
-                    <div class="mb-2 col-lg-5 col-md-6 col-sm-12">
+                    <div class="mb-2 col-lg-4 col-md-6 col-sm-12">
                         <input type="search" id="buscarEmpleador" class="form-control form-control-sm fecha1" name='' placeholder="Buscar Empleador por ruc/dni o por nombre Comercial" required>
                     </div>
-
+                    <div class="mb-1 margen-right col-lg-2 col-md-6 col-sm-12">
+                        <div>
+                            <a href="javascript:void(0)" class="w-100 btn-square btn btn-success ecxel mb-2"
+                                id="btnEcxel-person">
+                                <i class="fa-solid fa-file-excel"></i>
+                                Exportar Excel por filtro
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mb-1 margen-right col-lg-2 col-md-6 col-sm-12">
+                        <div>
+                            <a href="BR_empleadores/EsportarTodoExcel/" class="w-100 btn-square btn btn-success ecxel mb-2"
+                                id="btnEcxel-person">
+                                <i class="fa-solid fa-file-excel"></i>
+                                Exportar Todos los Empleadores
+                            </a>
+                        </div>
+                    </div>
                     <div class="col-lg-2">
                         <a href="BR_empleadores/crearCuenta" class="btn btn-outline-primary"><i class="fa fa-plus" aria-hidden="true"></i> Crear cuenta al Empleador</a>
                     </div>
@@ -74,6 +91,8 @@ table.dataTable td {
                             <th>NOMBRES Y APELLIDOS DEL CONTACTO</th>
                             <th>TELÉFONO DEL CONTACTO</th>
                             <th>EMAIL DEL CONTACTO</th>
+                            <th>VACANTES TOTALES</th>
+                            <th>AVISOS PUBLICADOS</th>
                             <th>ESTADO</th>
                             <th>*</th>
                         </tr>
@@ -173,6 +192,16 @@ table.dataTable td {
     </form>
 
 </div>
+
+
+
+<!-- ESTO ES EL MODAL DE VER CANTIDADES DE CANDIDATOS POR AVISOS -->
+<div id="modalCandidatosAvisos" style="display:none;width:1400px;">
+    <h5><b>AVISOS POR EMPRESA</b></h5>
+
+
+</div>
+
 
 <!-- LIBRERIA DATATABLES -->
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>

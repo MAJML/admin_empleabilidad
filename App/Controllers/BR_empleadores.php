@@ -127,4 +127,232 @@ class BR_empleadores
         echo json_encode($respuesta);
     }
 
+    public function EsportarTodoExcel()
+    {
+        $spreadsheet = new Spreadsheet();
+        $spreadsheet -> getProperties()->setCreator("Reporte Excel Empleadores")->setTitle('Mi Excel');
+
+        /* TITULO EXCEL */
+        $spreadsheet -> setActiveSheetIndex(0)->mergeCells('A1:T1');
+        $spreadsheet -> setActiveSheetIndex(0)->setCellValue('A1', 'LISTA EMPLEADORES');
+        $spreadsheet -> getActiveSheet()->getStyle('A1:T1')->getFont()->setSize(18);
+        $spreadsheet -> getActiveSheet()->getStyle('A1:T1')->getFont()->setBold(true);
+        $spreadsheet -> getActiveSheet()->getStyle('A1:T1')->getAlignment()->setHorizontal('center');
+        /* END TITULO EXCEL */
+
+        /* FILA DE LA FECHA DE LA TABLA DEL EXCEL */
+        $spreadsheet -> setActiveSheetIndex(0)->mergeCells('A2:T2');
+        $spreadsheet -> setActiveSheetIndex(0)->setCellValue('A2', 'Estos son todos los empleadores');
+        $spreadsheet -> getActiveSheet()->getStyle('A2:T2')->getFont()->setBold(true);
+        /* END DE LA FECHA DE LA TABLA DEL EXCEL */
+
+        /* CABEZERA TABLA EXCEL */
+        $spreadsheet -> getActiveSheet()->getStyle('A3:T3')->getFont()->setSize(11);
+        $spreadsheet -> getActiveSheet()->getStyle('A3:T3')->getFont()->setBold(true);
+        $spreadsheet->getActiveSheet()->getStyle('A3:T3')->getFill()
+            ->setFillType(Fill::FILL_SOLID)
+            ->getStartColor()->setARGB('AED6F1');
+
+        $hojaActiva = $spreadsheet -> getActiveSheet();
+        $hojaActiva -> getColumnDimension('A')->setWidth(6);
+        $hojaActiva -> getColumnDimension('B')->setWidth(24);
+        $hojaActiva -> getColumnDimension('C')->setWidth(18);
+        $hojaActiva -> getColumnDimension('D')->setWidth(20);
+        $hojaActiva -> getColumnDimension('E')->setWidth(55);
+        $hojaActiva -> getColumnDimension('F')->setWidth(55);
+        $hojaActiva -> getColumnDimension('G')->setWidth(55);
+        $hojaActiva -> getColumnDimension('H')->setWidth(55);
+        $hojaActiva -> getColumnDimension('I')->setWidth(55);
+        $hojaActiva -> getColumnDimension('J')->setWidth(30);
+        $hojaActiva -> getColumnDimension('K')->setWidth(30);
+        $hojaActiva -> getColumnDimension('L')->setWidth(20);
+        $hojaActiva -> getColumnDimension('M')->setWidth(30);
+        $hojaActiva -> getColumnDimension('N')->setWidth(30);
+        $hojaActiva -> getColumnDimension('O')->setWidth(20);
+        $hojaActiva -> getColumnDimension('P')->setWidth(20);
+        $hojaActiva -> getColumnDimension('Q')->setWidth(30);
+        $hojaActiva -> getColumnDimension('R')->setWidth(30);
+        $hojaActiva -> getColumnDimension('S')->setWidth(30);
+
+        $hojaActiva -> setCellValue('A3', 'N°') 
+                    -> setCellValue('B3', 'Fecha de Registro')
+                    -> setCellValue('C3', 'RUC / DNI')
+                    -> setCellValue('D3', 'Razon Social / Nombre y Apellidos completos')
+                    -> setCellValue('E3', 'Nombre Comercial')
+                    -> setCellValue('F3', 'Dirección')
+                    -> setCellValue('G3', 'Referencia')
+                    -> setCellValue('H3', 'Telefono de la Empresa')
+                    -> setCellValue('I3', 'Correo de la Empresa')
+                    -> setCellValue('J3', 'Nombre y apellido del contacto')
+                    -> setCellValue('K3', 'Cargo del contacto')
+                    -> setCellValue('L3', 'Telefono del contacto')
+                    -> setCellValue('M3', 'Correo del contacto')
+                    -> setCellValue('N3', 'Vacantes Totales')
+                    -> setCellValue('O3', 'Avisos Publicados')
+                    -> setCellValue('P3', 'Nombre completo del Paciente')
+                    -> setCellValue('Q3', 'Enfermedad del Paciente')
+                    -> setCellValue('R3', 'Diagnóstico Médico')
+                    -> setCellValue('S3', 'Estado');
+        /* END CABEZERA TABLA EXCEL */
+
+        $respuesta = $this->model->TodosEmpleador();
+        $i    = 3;
+        $cant = 0;
+
+        foreach ($respuesta as $clave => $valor) {
+            $i++;
+            $cant++;
+
+            if($valor->aprobado == 1){
+                $estado = "Activado";
+            }else if($valor->aprobado == 0){
+                $estado = "Inactivo";
+            }
+
+            $hojaActiva -> setCellValue('A' . $i, $cant) 
+                        -> setCellValue('B' . $i, $valor->created_at)
+                        -> setCellValue('C' . $i, $valor->ruc)
+                        -> setCellValue('D' . $i, $valor->razon_social)
+                        -> setCellValue('E' . $i, $valor->nombre_comercial)
+                        -> setCellValue('F' . $i, $valor->direccion)
+                        -> setCellValue('G' . $i, $valor->referencia)
+                        -> setCellValue('H' . $i, $valor->telefono)
+                        -> setCellValue('I' . $i, $valor->email)
+                        -> setCellValue('J' . $i, $valor->nombre_contacto)
+                        -> setCellValue('K' . $i, $valor->cargo_contacto)
+                        -> setCellValue('L' . $i, $valor->telefono_contacto)
+                        -> setCellValue('M' . $i, $valor->email_contacto)
+                        -> setCellValue('N' . $i, $valor->VacantesTotales)
+                        -> setCellValue('O' . $i, $valor->CantidadAvisos)
+                        -> setCellValue('P' . $i, $valor->nombre_paciente)
+                        -> setCellValue('Q' . $i, $valor->enfermedad_paciente)
+                        -> setCellValue('R' . $i, $valor->evidencias_paciente)
+                        -> setCellValue('S' . $i, $estado);
+        }
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="Busqueda rapida empleadores.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+        $writer->save('php://output');
+    }
+    
+    public function EsportarExcel()
+    {
+        if (func_num_args() == 1) {
+            $valor = func_get_arg(0);
+        }else if(func_num_args() == 0){
+            $valor = func_get_arg(0);
+        }
+
+        $spreadsheet = new Spreadsheet();
+        $spreadsheet -> getProperties()->setCreator("Reporte Excel Empleadores")->setTitle('Mi Excel');
+
+        /* TITULO EXCEL */
+        $spreadsheet -> setActiveSheetIndex(0)->mergeCells('A1:T1');
+        $spreadsheet -> setActiveSheetIndex(0)->setCellValue('A1', 'LISTA EMPLEADORES');
+        $spreadsheet -> getActiveSheet()->getStyle('A1:T1')->getFont()->setSize(18);
+        $spreadsheet -> getActiveSheet()->getStyle('A1:T1')->getFont()->setBold(true);
+        $spreadsheet -> getActiveSheet()->getStyle('A1:T1')->getAlignment()->setHorizontal('center');
+        /* END TITULO EXCEL */
+
+        /* FILA DE LA FECHA DE LA TABLA DEL EXCEL */
+        $spreadsheet -> setActiveSheetIndex(0)->mergeCells('A2:T2');
+        $spreadsheet -> setActiveSheetIndex(0)->setCellValue('A2', 'LOS DATOS SON DEL DE ACUERDO A LA BUSQUEDA QUE HIZO');
+        $spreadsheet -> getActiveSheet()->getStyle('A2:T2')->getFont()->setBold(true);
+        /* END DE LA FECHA DE LA TABLA DEL EXCEL */
+
+        /* CABEZERA TABLA EXCEL */
+        $spreadsheet -> getActiveSheet()->getStyle('A3:T3')->getFont()->setSize(11);
+        $spreadsheet -> getActiveSheet()->getStyle('A3:T3')->getFont()->setBold(true);
+        $spreadsheet->getActiveSheet()->getStyle('A3:T3')->getFill()
+            ->setFillType(Fill::FILL_SOLID)
+            ->getStartColor()->setARGB('AED6F1');
+
+        $hojaActiva = $spreadsheet -> getActiveSheet();
+        $hojaActiva -> getColumnDimension('A')->setWidth(6);
+        $hojaActiva -> getColumnDimension('B')->setWidth(24);
+        $hojaActiva -> getColumnDimension('C')->setWidth(18);
+        $hojaActiva -> getColumnDimension('D')->setWidth(20);
+        $hojaActiva -> getColumnDimension('E')->setWidth(55);
+        $hojaActiva -> getColumnDimension('F')->setWidth(55);
+        $hojaActiva -> getColumnDimension('G')->setWidth(55);
+        $hojaActiva -> getColumnDimension('H')->setWidth(55);
+        $hojaActiva -> getColumnDimension('I')->setWidth(55);
+        $hojaActiva -> getColumnDimension('J')->setWidth(30);
+        $hojaActiva -> getColumnDimension('K')->setWidth(30);
+        $hojaActiva -> getColumnDimension('L')->setWidth(20);
+        $hojaActiva -> getColumnDimension('M')->setWidth(30);
+        $hojaActiva -> getColumnDimension('N')->setWidth(30);
+        $hojaActiva -> getColumnDimension('O')->setWidth(20);
+        $hojaActiva -> getColumnDimension('P')->setWidth(20);
+        $hojaActiva -> getColumnDimension('Q')->setWidth(30);
+        $hojaActiva -> getColumnDimension('R')->setWidth(30);
+        $hojaActiva -> getColumnDimension('S')->setWidth(30);
+
+        $hojaActiva -> setCellValue('A3', 'N°') 
+                    -> setCellValue('B3', 'Fecha de Registro')
+                    -> setCellValue('C3', 'RUC / DNI')
+                    -> setCellValue('D3', 'Razon Social / Nombre y Apellidos completos')
+                    -> setCellValue('E3', 'Nombre Comercial')
+                    -> setCellValue('F3', 'Dirección')
+                    -> setCellValue('G3', 'Referencia')
+                    -> setCellValue('H3', 'Telefono de la Empresa')
+                    -> setCellValue('I3', 'Correo de la Empresa')
+                    -> setCellValue('J3', 'Nombre y apellido del contacto')
+                    -> setCellValue('K3', 'Cargo del contacto')
+                    -> setCellValue('L3', 'Telefono del contacto')
+                    -> setCellValue('M3', 'Correo del contacto')
+                    -> setCellValue('N3', 'Vacantes Totales')
+                    -> setCellValue('O3', 'Avisos Publicados')
+                    -> setCellValue('P3', 'Nombre completo del Paciente')
+                    -> setCellValue('Q3', 'Enfermedad del Paciente')
+                    -> setCellValue('R3', 'Diagnóstico Médico')
+                    -> setCellValue('S3', 'Estado');
+        /* END CABEZERA TABLA EXCEL */
+
+        $respuesta = $this->model->BusquedaRapidaEmpleador($valor);
+        $i    = 3;
+        $cant = 0;
+
+        foreach ($respuesta as $clave => $valor) {
+            $i++;
+            $cant++;
+
+            if($valor->aprobado == 1){
+                $estado = "Activado";
+            }else if($valor->aprobado == 0){
+                $estado = "Inactivo";
+            }
+
+            $hojaActiva -> setCellValue('A' . $i, $cant) 
+                        -> setCellValue('B' . $i, $valor->created_at)
+                        -> setCellValue('C' . $i, $valor->ruc)
+                        -> setCellValue('D' . $i, $valor->razon_social)
+                        -> setCellValue('E' . $i, $valor->nombre_comercial)
+                        -> setCellValue('F' . $i, $valor->direccion)
+                        -> setCellValue('G' . $i, $valor->referencia)
+                        -> setCellValue('H' . $i, $valor->telefono)
+                        -> setCellValue('I' . $i, $valor->email)
+                        -> setCellValue('J' . $i, $valor->nombre_contacto)
+                        -> setCellValue('K' . $i, $valor->cargo_contacto)
+                        -> setCellValue('L' . $i, $valor->telefono_contacto)
+                        -> setCellValue('M' . $i, $valor->email_contacto)
+                        -> setCellValue('N' . $i, $valor->VacantesTotales)
+                        -> setCellValue('O' . $i, $valor->CantidadAvisos)
+                        -> setCellValue('P' . $i, $valor->nombre_paciente)
+                        -> setCellValue('Q' . $i, $valor->enfermedad_paciente)
+                        -> setCellValue('R' . $i, $valor->evidencias_paciente)
+                        -> setCellValue('S' . $i, $estado);
+        }
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="Busqueda rapida empleadores.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+        $writer->save('php://output');
+
+    }
 }
