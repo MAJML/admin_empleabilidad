@@ -109,9 +109,9 @@ function graficoContadorGradoAcademico(dataContador)
     let totalEgresado = arrayEgresado.reduce((a, b) => a + b, 0);
     let totalTitulado = arrayTitulado.reduce((a, b) => a + b, 0);
 
-    $(".total_estudiantes").html('<b>● Total de Intermediadios Estudiantes: </b>' + totalEstudiante)
-    $(".total_egresados").html('<b>● Total de Intermediados Egresados: </b>' + totalEgresado)
-    $(".total_titulados").html('<b>● Total de Intermediados Títulados: </b>' + totalTitulado)
+    $(".total_estudiantes").html('<b>● Total de Insertados Estudiantes: </b>' + totalEstudiante)
+    $(".total_egresados").html('<b>● Total de Insertados Egresados: </b>' + totalEgresado)
+    $(".total_titulados").html('<b>● Total de Insertados Títulados: </b>' + totalTitulado)
 
     Highcharts.chart('container', {
         chart: {
