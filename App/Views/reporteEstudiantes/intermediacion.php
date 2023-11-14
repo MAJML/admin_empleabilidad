@@ -18,7 +18,7 @@ table.dataTable td {
                 <div class="page-title-heading">
                     <div>
                         <div class="page-title-head center-elem">
-                            <span class="d-inline-block">| Reporte de Intermediados</span>
+                            <span class="d-inline-block">| Reporte de Insertados</span>
                         </div>
                         <div class="page-title-subheading opacity-10">
                             <nav class aria-label="breadcrumb">
@@ -29,7 +29,7 @@ table.dataTable td {
                                         </a>
                                     </li>
                                     <li class="breadcrumb-item">
-                                        <a>Reporte Estudiante / Intermediación</a>
+                                        <a>Reporte Estudiante / Insertados</a>
                                     </li>
                                 </ol>
                             </nav>
@@ -113,7 +113,7 @@ table.dataTable td {
             <div class="col-md-12 mb-3">
                 <div class="card">
                     <div class="card-header app-page-title text-white">
-                        RESUMEN DE INTERMEDIADOS POR PROGRAMA DE ESTUDIOS
+                        RESUMEN DE INSERTADOS POR PROGRAMA DE ESTUDIOS
                     </div>
                     <div class="card-body">
                         <figure class="highcharts-figure">
@@ -134,7 +134,7 @@ table.dataTable td {
             <div class="p-0 card col-md-12">
 
                 <div class="card-header app-page-title text-white">
-                    DETALLES DE ESTUDIANTE SEGUN INTERMEDIACIÓN
+                    DETALLES DE ESTUDIANTE SEGUN INSERTADOS
                     <div class="margen-right ancho_caja_input col-md-3">
                         <div>
                             <a href="javascript:void(0)" class="w-100 btn-square btn btn-success ecxel" id="btnEcxel">

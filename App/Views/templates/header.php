@@ -766,7 +766,7 @@ table {
                                     <li>
                                         <a class="<?= ($link == $baseUrl.'R_EST_intermediacion') ? 'mm-active' : '' ; ?>"
                                             href="<?=$baseUrl?>R_EST_intermediacion">
-                                            <i class="metismenu-icon"></i> Intermediados
+                                            <i class="metismenu-icon"></i> Insertados
                                         </a>
                                     </li>
                                     <li>
