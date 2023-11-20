@@ -28,6 +28,7 @@ class BR_empleadores
             exit;
         }
         $this -> model = new BR_empleadoresModel();
+        date_default_timezone_set('America/Lima');
     }
 
     public function index()
@@ -121,7 +122,8 @@ class BR_empleadores
             'correo_contacto'       => $_POST['correo_contacto'],
             'nombre_paciente'       => $_POST['nombre_paciente'],
             'enfermedad_paciente'   => $_POST['enfermedad_paciente'],
-            'tipo_persona'          => $_POST['tipo_persona']
+            'tipo_persona'          => $_POST['tipo_persona'],
+            'fecha_creacion'        => $_POST['fecha_creacion']
         );
         $respuesta = $this->model->CrearCuentaEmpleador($datos);
         echo json_encode($respuesta);
