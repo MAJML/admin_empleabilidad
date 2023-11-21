@@ -73,7 +73,7 @@
                                                     <div class="col-md-6" id="input_razonSocial">
                                                         <div class="position-relative form-group">
                                                             <label for="" class="form-label"><b>Razón Social.</b></label>
-                                                            <input name="razon_social" id="razon_social" type="text" class="form-control form-control-sm" readonly>
+                                                            <input name="razon_social" id="razon_social" type="text" class="form-control form-control-sm">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6" id="input_actividadEconomica">
