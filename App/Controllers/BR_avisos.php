@@ -69,14 +69,15 @@ class BR_avisos
         );
         $respuesta = $this->avisos->RegistroAviso($data);
         if($respuesta == "ok"){
+            /* window.location.href='http://localhost:8080/admin_empleabilidad/BR_avisos/crearCuenta' */
             /* window.location.href='https://ial.edu.pe/admin_empleabilidad/BR_avisos/crearCuenta' */
             echo "<script> 
-                    window.location.href='http://localhost:8080/admin_empleabilidad/BR_avisos/crearCuenta'
+                    window.location.href='https://ial.edu.pe/admin_empleabilidad/BR_avisos/crearCuenta'
                     window.history.replaceState( null, null, window.location.href);
             </script>";
         }else{
             echo "<script> 
-                    window.location.href='http://localhost:8080/admin_empleabilidad/BR_avisos/crearCuenta'
+                    window.location.href='https://ial.edu.pe/admin_empleabilidad/BR_avisos/crearCuenta'
                     window.history.replaceState( null, null, window.location.href);
             </script>";
         }
