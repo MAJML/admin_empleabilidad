@@ -35,7 +35,35 @@ class BR_avisosModel extends Model
         $query->execute();
         return $query->fetchAll();
     }
-    
+
+    public function ListaAvisosCreados()
+    {
+        $query = $this->db->prepare("SELECT 
+        EM.ruc,
+        EM.nombre_comercial,
+        AV.created_at,
+        D.nombre as 'distritos',
+        AV.titulo
+        from avisos AV
+        inner join distritos D on D.id=AV.distrito_id 
+        inner join empresas EM on EM.id=AV.empresa_id
+        where date(AV.created_at) = date(NOW()) and AV.deleted_at is null 
+        order by AV.created_at desc");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function RegistroAviso($data)
+    {
+        $query = $this->db->prepare('INSERT INTO avisos(empresa_id, titulo, link, distrito_id, descripcion, direccion, referencia_direccion, salario, vacantes, solicita_carrera, solicita_grado_a, ciclo_cursa, periodo_vigencia, created_at) 
+        VALUES ('.$data["empresa_id"].', "'.$data["titulo"].'", "'.$data["link"].'", "'.$data["distrito_id"].'", "'.$data["descripcion"].'", "'.$data["direccion"].'", "'.$data["referencia"].'", "'.$data["salario"].'", "'.$data["vacantes"].'", "'.$data["carrera"].'", "'.$data["solicita_grado"].'", "'.$data["ciclo"].'", "'.$data["vigencia"].'", "'.$data["creacion_aviso"].'")');
+        if($query->execute()){
+            return "ok";
+        }else{
+            return "error";          
+        }
+    }
+
     public function RegistrarPostulantemManual($datos)
     {
         $query = $this->db->prepare('INSERT INTO estudiante_avisos(aviso_id, nombres, dni, telefono, correo, grado_academico, estado) 
