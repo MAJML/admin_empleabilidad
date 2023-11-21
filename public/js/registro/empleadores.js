@@ -4,7 +4,7 @@ busquedaRucEmpleadores()
 busquedaDniEmpleador()
 ConsultarListaCuentasCreadas()
 
-$(document).on('submit', "#form_crear_personaJuridica", function(event){
+$("#form_crear_personaJuridica").on("submit", function(event) {
     event.preventDefault();
     var data = $(this).serialize();
     $.ajax({
@@ -16,9 +16,10 @@ $(document).on('submit', "#form_crear_personaJuridica", function(event){
             console.log("esto es la consola crear BR_empleadores  : ", response)
             if(response == "ok"){
                 ConsultarListaCuentasCreadas()
+                location.reload();
                 $("#form_crear_personaJuridica").trigger("reset");
                 $("#distrito option").remove();
-                $("#form_crear_personaJuridica #campos_formulario_personaJuridica").prop('hidden', true)
+/*                 $("#form_crear_personaJuridica #campos_formulario_personaJuridica").prop('hidden', true)
                 $("#form_crear_personaJuridica").append(`
                 <div id="alerta_alumno_creado">
                 <div class="no-results">
@@ -41,15 +42,15 @@ $(document).on('submit', "#form_crear_personaJuridica", function(event){
                     </div>
                 </div>
                 </div>
-                `)
-                $("#crear_otra_cuenta").on("click", function(){
+                `) */
+/*                 $("#crear_otra_cuenta").on("click", function(){
                     $("#validationRuc").html("Ingrese su RUC para autocompletar los datos.").removeClass("text-success").addClass("text-danger")
                     $("#form_crear_personaJuridica").trigger("reset");
                     $("#distrito option").remove();
                     $("#form_crear_personaJuridica #alerta_alumno_creado").remove()
                     $("#form_crear_personaJuridica #campos_formulario_personaJuridica").prop('hidden', false)
                     console.log("esto es la consola de crear otra cuenta");
-                })
+                }) */
             }else{
                 console.log('no se ha podido crear');
             }

@@ -47,6 +47,13 @@ class BR_avisosModel extends Model
         }
     }
 
+    public function empresas()
+    {
+        $query = $this->db->prepare("SELECT * FROM empresas WHERE deleted_at is null");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
     public function Distrito()
     {
         $query = $this->db->prepare("SELECT * FROM distritos WHERE deleted_at is null");

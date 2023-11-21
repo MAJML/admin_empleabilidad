@@ -63,9 +63,12 @@ table.dataTable td {
     <div class="card-body">
         <div class="row">
             <div class="col-12 d-flex flex-wrap justify-content-sm-center justify-content-lg-start justify-content-center w-100 p-1">
-                <form action="" class="d-flex flex-wrap col-12" role="form" method="post">
+                <form action="" class="d-flex flex-wrap col-12 justify-content-between" role="form" method="post">
                     <div class="mb-2 margen-right col-md-5">
                         <input type="search" class="form-control form-control-sm fecha1" name='' id="buscarAviso" placeholder="Buscar por Titulo de Aviso o por ruc/dni" required>
+                    </div>
+                    <div class="col-lg-2">
+                        <a href="BR_avisos/crearCuenta" class="btn btn-outline-primary"><i class="fa fa-plus" aria-hidden="true"></i> Crear Aviso</a>
                     </div>
                 </form>
             </div>

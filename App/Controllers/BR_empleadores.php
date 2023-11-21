@@ -103,11 +103,12 @@ class BR_empleadores
 
     public function CrearCuentaEmpleadores()
     {
+        $fecha_creacion = date("Y-m-d H:i:s", strtotime($_POST['fecha_creacion']));
         $datos = array(
             'ruc'                   => $_POST['ruc'],
-            'nombre_empresa'        => $_POST['nombre_empresa'],
-            'nombre_comercial'      => $_POST['nombre_comercial'],
-            'razon_social'          => $_POST['razon_social'],
+            'nombre_empresa'        => str_replace('"','',$_POST['nombre_empresa']),
+            'nombre_comercial'      => str_replace('"','',$_POST['nombre_comercial']),
+            'razon_social'          => str_replace('"','',$_POST['razon_social']),
             'actividad_economica'   => $_POST['actividad_economica'],
             'direccion'             => $_POST['direccion'],
             'referencia'            => $_POST['referencia'],
@@ -123,7 +124,7 @@ class BR_empleadores
             'nombre_paciente'       => $_POST['nombre_paciente'],
             'enfermedad_paciente'   => $_POST['enfermedad_paciente'],
             'tipo_persona'          => $_POST['tipo_persona'],
-            'fecha_creacion'        => $_POST['fecha_creacion']
+            'fecha_creacion'        => $fecha_creacion
         );
         $respuesta = $this->model->CrearCuentaEmpleador($datos);
         echo json_encode($respuesta);

@@ -87,7 +87,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6" id="input_razonSocial">
+                                                    <div class="col-md-6">
                                                         <div class="position-relative form-group">
                                                             <label for="" class="form-label"><b>Fecha de Creación <span class="text-danger">(Campo requerido)</span></b></label>
                                                             <input name="fecha_creacion" id="" type="datetime-local" class="form-control form-control-sm" required>
