@@ -81,11 +81,6 @@ class BR_avisos
                     window.history.replaceState( null, null, window.location.href);
             </script>";
         }
-/*         $distrito = $this->avisos->Distrito();
-        $empresas = $this->avisos->empresas();
-        $carrera = $this->avisos->Carrera();
-        $grado_academico = $this->avisos->GradoAcademico();
-        View::render(['registro/crear_avisos'],['empresas' => $empresas, 'carrera' => $carrera, 'distrito' => $distrito, 'grado_academico' => $grado_academico]); */
     }
 
     public function ListaAvisosCreados()

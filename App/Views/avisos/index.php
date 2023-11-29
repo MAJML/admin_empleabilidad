@@ -220,8 +220,12 @@ table.dataTable td {
                 <?php endforeach; ?>
             </select>
         </div>
+        <div class="mb-3 col-md-12">
+            <label for=""><b>Fecha de Postulación <span class="text-danger">Obligatorio</span></b></label>
+            <input class="form-control form-control-sm" type="datetime-local" name="fecha_registro_postulante" id="fecha_registro_postulante" required>
+        </div>
         <div class="col-md-12">
-            <button type="submit" class="btn btn-success w-100">Modificar Estado</button>
+            <button type="submit" class="btn btn-success w-100">Modificar</button>
         </div>
     </form>
 </div>

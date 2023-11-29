@@ -235,7 +235,7 @@ class AvisosModel extends Model
    
     public function EditarEstadoPost($datos)
     {
-        $query = $this->db->prepare('UPDATE alumno_avisos SET estado_id="'.$datos["idEstado"].'" WHERE alumno_id="'.$datos["idAlumno"].'" and aviso_id="'.$datos["idAviso"].'"');                                                                                                             
+        $query = $this->db->prepare('UPDATE alumno_avisos SET estado_id="'.$datos["idEstado"].'", created_at="'.$datos["fechaPostulacion"].'" WHERE alumno_id="'.$datos["idAlumno"].'" and aviso_id="'.$datos["idAviso"].'"');                                                                                                             
         if($query->execute()){
             return "ok";
         }else{

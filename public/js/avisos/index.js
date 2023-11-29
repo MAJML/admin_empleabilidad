@@ -332,6 +332,7 @@ function verData(idData)
           var oTablePostulante = $('.TablaListadoPostulantes').dataTable();
           oTablePostulante.fnClearTable();
           for(var i = 0; i < response.length; i++) {
+              var fechaPostulacion = response[i]['created_at']
               var iconEditEstado = '<a href="javascript:void(0)" class="btn btn-outline-primary" onclick=EditarEstadoPost("'+ response[i]['estado_id'] +'","'+response[i]['aviso_id']+'","'+response[i]['alumno_id']+'") data-fancybox data-src="#modal_edit_estado" data-width="3000" data-height="400"><i class="fa-solid fa-edit"></i></a>'; 
               oTablePostulante.fnAddData([ fila, 
                                   response[i]['nombres']+" "+response[i]['apellidos'], 
@@ -339,7 +340,7 @@ function verData(idData)
                                   response[i]['telefono'], 
                                   response[i]['estado'],
                                   response[i]['email'],
-                                  response[i]['created_at'],
+                                  fechaPostulacion,
                                   iconEditEstado
                               ]);
               fila++;
@@ -354,7 +355,8 @@ function EditarEstadoPost(idEstado, idAviso, idAlumno)
 {
   $("#idAviso").val(idAviso)
   $("#idAlumno").val(idAlumno)
-  $("#estado_postulante").val(idEstado)  
+  $("#estado_postulante").val(idEstado)
+  $("#fecha_registro_postulante").val("")
 }
 
 function AlertaEliminar(idData)

@@ -137,7 +137,8 @@ class Avisos
         $datos = array(
             'idEstado' => $_POST['estado_postulante'],
             'idAviso' => $_POST['idAviso'],
-            'idAlumno' => $_POST['idAlumno']
+            'idAlumno' => $_POST['idAlumno'],
+            'fechaPostulacion'  => $_POST['fecha_registro_postulante']
         );
         $respuesta = $this->Estudiante->EditarEstadoPost($datos);
         echo json_encode($respuesta);
