@@ -127,7 +127,7 @@ $(document).ready(function() {
                     var iconDelete = '<a href="javascript:void(0)" onclick=AlertaEliminar("'+ response[i]['id'] +'") class="btn btn-outline-danger" ><i class="fa-solid fa-trash"></i></a>';
                     var iconCuadro = '<a href="javascript:void(0)" class="btn btn-outline-primary" onclick=verAviso("'+ response[i]['id'] +'") data-fancybox data-src="#modal_seguiminetoIntermediacion" data-width="3000" data-height="400"><i class="fa-solid fa-users-rectangle"></i></a>';         
                     var iconGroup = '<a href="javascript:void(0)" onclick=verData("'+ response[i]['id'] +'") class="btn btn-outline-success mx-1" data-fancybox data-src="#modal_ver_data" data-width="3000" data-height="400"><i class="fa-solid fa-users"></i></a>';     
-                    var editGroup = '<a href="javascript:void(0)" onclick=editAviso("'+ response[i]['id'] +'") class="btn btn-outline-warning mr-1" data-fancybox data-src="#modal_modificar_aviso" data-width="3000" data-height="400"><i class="fa-solid fa-edit"></i></a>';
+                    var editGroup = '<a href="javascript:void(0)" onclick=editAviso('+ response[i]['id'] +') class="btn btn-outline-warning mr-1" data-fancybox data-src="#modal_modificar_aviso" data-width="3000" data-height="400"><i class="fa-solid fa-edit"></i></a>';
                     var contenIcon = '<div class="d-flex">'+ iconCuadro + iconGroup + editGroup + iconDelete +'</div>'
                     
                     oTable.fnAddData([ fila, 
@@ -192,7 +192,7 @@ $(document).ready(function() {
       url:'Avisos/EditarEstadoPost',
       data:datos,
       success:function(response){
-        console.log('esto es la rpta : ', response)
+        /* console.log('esto es la rpta : ', response) */
         if(response == "ok"){
           Swal.fire({
             icon: 'success',
@@ -220,13 +220,20 @@ $(document).ready(function() {
 
 function editAviso(idData)
 {
+  var fecha;
   $.ajax({
     type:"POST",
     dataType:"json",
     url:'Avisos/TraeDataAvisoModific',
     data: {id:idData},
     success:function(response){
-      /*  console.log("esto de la data : ",response) */
+      /* console.log(response); */
+      fecha = new Date(response[0]['publicado']);
+      var fechaObjeto = new Date(fecha.toDateString());
+      var mes = fechaObjeto.getMonth() + 1;
+      var tiempoObjeto = fecha.toTimeString().match(/(\d+):(\d+):(\d+)/);
+      $("#mod_form_fecha_publicacion").val(fechaObjeto.getFullYear()+'-'+mes.toString().padStart(2, '0')+'-'+fechaObjeto.getDate().toString().padStart(2, '0'))
+      $("#mod_form_hora_publicacion").val(parseInt(tiempoObjeto[1], 10).toString().padStart(2, '0')+':'+parseInt(tiempoObjeto[2], 10).toString().padStart(2, '0'))
       $("#id_aviso").val(response[0]["id"])
       $("#mod_form_titulo").val(response[0]["titulo"])
       $("#mod_form_distrito").val(response[0]["distrito_id"])

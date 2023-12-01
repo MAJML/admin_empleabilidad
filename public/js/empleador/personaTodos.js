@@ -283,10 +283,6 @@ $(document).on("click", ".btn_estado_empleador", function(){
 
 })
 
-
-
-
-
 function verData(idData)
 {
     $.ajax({

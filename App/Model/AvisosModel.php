@@ -83,7 +83,7 @@ class AvisosModel extends Model
 
     public function ModificarAviso($datos)
     {
-        $query = $this->db->prepare('UPDATE avisos SET titulo="'.$datos["mod_form_titulo"].'",distrito_id="'.$datos["mod_form_distrito"].'", descripcion="'.$datos["mod_form_descripcion"].'", salario="'.$datos["mod_form_salario"].'", vacantes="'.$datos["mod_form_vacantes"].'", solicita_carrera="'.$datos["mod_form_carrera"].'", solicita_grado_a="'.$datos["mod_form_estado"].'", ciclo_cursa="'.$datos["mod_form_grado"].'" WHERE id='.$datos["id_aviso"].'');                                                                                                             
+        $query = $this->db->prepare('UPDATE avisos SET titulo="'.$datos["mod_form_titulo"].'",distrito_id="'.$datos["mod_form_distrito"].'", descripcion="'.$datos["mod_form_descripcion"].'", salario="'.$datos["mod_form_salario"].'", vacantes="'.$datos["mod_form_vacantes"].'", solicita_carrera="'.$datos["mod_form_carrera"].'", solicita_grado_a="'.$datos["mod_form_estado"].'", ciclo_cursa="'.$datos["mod_form_grado"].'", created_at="'.$datos["mod_publicacion"].'" WHERE id='.$datos["id_aviso"].'');                                                                                                             
         if($query->execute()){
             return "ok";
         }else{
@@ -111,9 +111,9 @@ class AvisosModel extends Model
         COALESCE(EM.nombre_comercial, "no hay dato") AS "nombre_comercial",
         AV.created_at AS "publicado"
         FROM avisos AV 
-        INNER JOIN empresas EM ON EM.id=AV.empresa_id
-        INNER JOIN distritos D ON D.id=AV.distrito_id
-        INNER JOIN areas AR ON AR.id=AV.solicita_carrera
+        LEFT JOIN empresas EM ON EM.id=AV.empresa_id
+        LEFT JOIN distritos D ON D.id=AV.distrito_id
+        LEFT JOIN areas AR ON AR.id=AV.solicita_carrera
         WHERE AV.id='.$id);
         $query->execute();
         return $query->fetchAll();
