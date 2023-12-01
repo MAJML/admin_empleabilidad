@@ -291,7 +291,13 @@ function verData(idData)
         url:'PersonaTodos/TraerDataPorID',
         data: {id:idData},
         success:function(response){
-            console.log("response : ",response);
+            /* console.log("response : ",response); */
+            fecha = new Date(response.fecha_registro)
+            var fechaObjeto = new Date(fecha.toDateString());
+            var mes = fechaObjeto.getMonth() + 1;
+            var tiempoObjeto = fecha.toTimeString().match(/(\d+):(\d+):(\d+)/);
+            $('#emp_fecha_registro').val(fechaObjeto.getFullYear()+'-'+mes.toString().padStart(2, '0')+'-'+fechaObjeto.getDate().toString().padStart(2, '0'))
+            $('#emp_hora_registro').val(parseInt(tiempoObjeto[1], 10).toString().padStart(2, '0')+':'+parseInt(tiempoObjeto[2], 10).toString().padStart(2, '0'))
             $('#id_empleador').val(response.id)
             $('#ruc').val(response.ruc)
             $('#razon_social').val(response.razon_social)

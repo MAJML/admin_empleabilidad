@@ -59,7 +59,7 @@ class PersonaTodosModel extends Model
 
     public function modificarEmpleador($datos)
     {
-        $query = $this->db->prepare('UPDATE empresas SET nombre_contacto="'.$datos["nombre_contacto"].'", cargo_contacto="'.$datos['cargo_contacto'].'", telefono_contacto="'.$datos["telefono_contacto"].'", email_contacto="'.$datos["email_contacto"].'", nombre_paciente="'.$datos["nombre_paciente"].'", enfermedad_paciente="'.$datos["enfermedad_paciente"].'" WHERE id="'.$datos["id"].'"');
+        $query = $this->db->prepare('UPDATE empresas SET nombre_contacto="'.$datos["nombre_contacto"].'", cargo_contacto="'.$datos['cargo_contacto'].'", telefono_contacto="'.$datos["telefono_contacto"].'", email_contacto="'.$datos["email_contacto"].'", nombre_paciente="'.$datos["nombre_paciente"].'", enfermedad_paciente="'.$datos["enfermedad_paciente"].'", created_at="'.$datos["fecha_registro"].'" WHERE id="'.$datos["id"].'"');
         if($query->execute()){
             return "ok";
         }else{

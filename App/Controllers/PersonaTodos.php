@@ -55,7 +55,8 @@ class PersonaTodos
             'cargo_contacto'     => $_POST['cargo_contacto'],
             'email_contacto'     => $_POST['email_contacto'],
             'nombre_paciente'    => $_POST['nombre_paciente'],
-            'enfermedad_paciente' => $_POST['enfermedad_paciente']
+            'enfermedad_paciente' => $_POST['enfermedad_paciente'],
+            'fecha_registro'     => $_POST['emp_fecha_registro'].' '.$_POST['emp_hora_registro']
         );
         $respuesta = $this -> PersonaJModel -> modificarEmpleador($datos);
         echo json_encode($respuesta);
