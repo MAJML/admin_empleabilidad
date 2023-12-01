@@ -291,6 +291,7 @@ function verData(idData)
         url:'PersonaTodos/TraerDataPorID',
         data: {id:idData},
         success:function(response){
+            console.log("response : ",response);
             $('#id_empleador').val(response.id)
             $('#ruc').val(response.ruc)
             $('#razon_social').val(response.razon_social)

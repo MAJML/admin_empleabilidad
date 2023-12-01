@@ -92,6 +92,7 @@ class PersonaTodosModel extends Model
         E.nombre_paciente,
         E.enfermedad_paciente,
         E.evidencias_paciente,
+        E.created_at as 'fecha_registro',
         P.nombre AS 'nombre_provincia',
         D.nombre AS 'nombre_distritos'
         FROM empresas E 

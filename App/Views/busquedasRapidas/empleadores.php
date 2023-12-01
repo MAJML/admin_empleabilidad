@@ -111,6 +111,17 @@ table.dataTable td {
     <h5><b>DATOS DE LA EMPRESA</b></h5>
 
     <form action="" method="post" id="form_modificar_empleador_contacto">
+        <div class="row">
+            <div class="col-3 mb-3">
+                <label class="form-label">Fecha de Registro</label>
+                <input type="date" id='emp_fecha_registro' name="emp_fecha_registro" class="form-control form-control-sm" required>
+            </div>
+            <div class="col-3 mb-3">
+                <label class="form-label">Hora de Registro</label>
+                <input type="time" id='emp_hora_registro' name="emp_hora_registro" class="form-control form-control-sm" required>
+            </div>
+        </div>
+        <hr>
         <div class='row'>
             <div class="col-4 mb-3">
                 <label class="form-label">RUC</label>
@@ -198,8 +209,6 @@ table.dataTable td {
 <!-- ESTO ES EL MODAL DE VER CANTIDADES DE CANDIDATOS POR AVISOS -->
 <div id="modalCandidatosAvisos" style="display:none;width:1400px;">
     <h5><b>AVISOS POR EMPRESA</b></h5>
-
-
 </div>
 
 
