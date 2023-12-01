@@ -227,7 +227,7 @@ function editAviso(idData)
     url:'Avisos/TraeDataAvisoModific',
     data: {id:idData},
     success:function(response){
-      console.log(response);
+      /* console.log(response); */
       fecha = new Date(response[0]['publicado']);
       var fechaObjeto = new Date(fecha.toDateString());
       var mes = fechaObjeto.getMonth() + 1;
