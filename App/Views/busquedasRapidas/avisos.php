@@ -117,6 +117,10 @@ table.dataTable td {
                 <label for="">Hora de Publicaión</label>
                 <input type="time" class="form-control form-control-sm" name="mod_form_hora_publicacion" id="mod_form_hora_publicacion" required>
             </div>
+            <div class="col-md-3 mb-3">
+                <label for="">Fecha de Vigencia</label>
+                <input type="date" class="form-control form-control-sm" name="mod_form_fecha_vigencia" id="mod_form_fecha_vigencia" required>
+            </div>
             <div class="col-md-12 mb-3">
                 <input type="text" id="mod_form_titulo" name="mod_form_titulo" class="form-control form-control-sm" placeholder="Ingrese titulo de la Oferta" required>
             </div>

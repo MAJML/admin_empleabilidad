@@ -83,7 +83,7 @@ class AvisosModel extends Model
 
     public function ModificarAviso($datos)
     {
-        $query = $this->db->prepare('UPDATE avisos SET titulo="'.$datos["mod_form_titulo"].'",distrito_id="'.$datos["mod_form_distrito"].'", descripcion="'.$datos["mod_form_descripcion"].'", salario="'.$datos["mod_form_salario"].'", vacantes="'.$datos["mod_form_vacantes"].'", solicita_carrera="'.$datos["mod_form_carrera"].'", solicita_grado_a="'.$datos["mod_form_estado"].'", ciclo_cursa="'.$datos["mod_form_grado"].'", created_at="'.$datos["mod_publicacion"].'" WHERE id='.$datos["id_aviso"].'');                                                                                                             
+        $query = $this->db->prepare('UPDATE avisos SET titulo="'.$datos["mod_form_titulo"].'",distrito_id="'.$datos["mod_form_distrito"].'", descripcion="'.$datos["mod_form_descripcion"].'", salario="'.$datos["mod_form_salario"].'", vacantes="'.$datos["mod_form_vacantes"].'", solicita_carrera="'.$datos["mod_form_carrera"].'", solicita_grado_a="'.$datos["mod_form_estado"].'", ciclo_cursa="'.$datos["mod_form_grado"].'", periodo_vigencia="'.$datos["mod_form_fecha_vigencia"].'" , created_at="'.$datos["mod_publicacion"].'" WHERE id='.$datos["id_aviso"].'');                                                                                                             
         if($query->execute()){
             return "ok";
         }else{

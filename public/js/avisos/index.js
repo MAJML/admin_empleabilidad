@@ -234,6 +234,7 @@ function editAviso(idData)
       var tiempoObjeto = fecha.toTimeString().match(/(\d+):(\d+):(\d+)/);
       $("#mod_form_fecha_publicacion").val(fechaObjeto.getFullYear()+'-'+mes.toString().padStart(2, '0')+'-'+fechaObjeto.getDate().toString().padStart(2, '0'))
       $("#mod_form_hora_publicacion").val(parseInt(tiempoObjeto[1], 10).toString().padStart(2, '0')+':'+parseInt(tiempoObjeto[2], 10).toString().padStart(2, '0'))
+      $("#mod_form_fecha_vigencia").val(response[0]['periodo_vigencia'])
       $("#id_aviso").val(response[0]["id"])
       $("#mod_form_titulo").val(response[0]["titulo"])
       $("#mod_form_distrito").val(response[0]["distrito_id"])
@@ -245,7 +246,6 @@ function editAviso(idData)
       $("#mod_form_salario").val(response[0]["salario"])
       $("#mod_form_grado").val(response[0]["ciclo_cursa"])  
       inputs_validation()
-
     },error:function(){
     console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
     }

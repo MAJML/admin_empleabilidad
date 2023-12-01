@@ -163,6 +163,7 @@ class Avisos
                        "mod_form_grado" => $_POST["mod_form_grado"],
                        "mod_form_descripcion" => $_POST["mod_form_descripcion"],
                        "mod_form_salario" => $_POST["mod_form_salario"],
+                       "mod_form_fecha_vigencia" => $_POST["mod_form_fecha_vigencia"],
                        "mod_publicacion" => $_POST["mod_form_fecha_publicacion"]." ".$_POST["mod_form_hora_publicacion"]);
         $respuesta = $this->Estudiante->ModificarAviso($datos);
         echo json_encode($respuesta);
