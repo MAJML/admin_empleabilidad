@@ -54,7 +54,7 @@ class BR_empleadores
     {
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://my.apidevs.pro/api/ruc/".$_POST['ruc']."?api_token=3fcaa8c48f59ff6ee58afff70a360af5fdcc214f512128165cdc050da28ee770",
+            CURLOPT_URL => "https://apiperu.dev/api/ruc/".$_POST['ruc']."?api_token=3fccc8c48f59ff6ee58afff70a360af5fdcc214f571128165cdc050da28f2770",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_SSL_VERIFYPEER => false
@@ -79,7 +79,7 @@ class BR_empleadores
     {
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://my.apidevs.pro/api/dni/".$_POST['dni']."?api_token=3fcaa8c48f59ff6ee58afff70a360af5fdcc214f512128165cdc050da28ee770",
+            CURLOPT_URL => "https://apiperu.dev/api/dni/".$_POST['dni']."?api_token=3fccc8c48f59ff6ee58afff70a360af5fdcc214f571128165cdc050da28f2770",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_SSL_VERIFYPEER => false
