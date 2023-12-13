@@ -21,10 +21,11 @@ class R_EST_intermediacionModel extends Model
             EST.nombre as 'estado_alumno'
         from alumnos AL
         inner join alumno_avisos ALV on ALV.alumno_id=AL.id
+        inner join avisos AV on AV.id=ALV.aviso_id
+        inner join empresas EM on EM.id=AV.empresa_id
+        inner join estados EST on EST.id=ALV.estado_id
+        inner join grado_academicos GA ON GA.id=AL.egresado
         inner join distritos D on D.id=AL.distrito_id
-        left join avisos AV on AV.id=ALV.aviso_id
-        left join empresas EM on EM.id=AV.empresa_id
-        left join estados EST on EST.id=ALV.estado_id
         where ALV.created_at BETWEEN '".$fecha_inicial." 00:00:00' AND '".$fecha_final." 23:59:59' AND AL.deleted_at is null ".$programa_estudio." ".$grado_academico." ".$estado_estudiante."");
         $query->execute();
         return $query->fetchAll();
