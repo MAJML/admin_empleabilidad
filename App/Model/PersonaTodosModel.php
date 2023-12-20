@@ -50,8 +50,8 @@ class PersonaTodosModel extends Model
         P.nombre AS 'nombre_provincia',
         D.nombre AS 'nombre_distritos'
         FROM empresas E 
-        LEFT JOIN provincias P ON P.id=E.provincia_id 
-        LEFT JOIN distritos D ON D.id=E.distrito_id
+        INNER JOIN provincias P ON P.id=E.provincia_id 
+        INNER JOIN distritos D ON D.id=E.distrito_id
         WHERE E.tipo_persona ".$tipoPersona." AND E.created_at BETWEEN '".$fecha_inicial." 00:00:00' AND '".$fecha_final." 23:59:59' AND E.deleted_at IS NULL AND E.aprobado ".$validacion."");
         $query->execute();
         return $query->fetchAll();

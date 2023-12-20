@@ -26,7 +26,7 @@ class R_EST_intermediacionModel extends Model
         inner join estados EST on EST.id=ALV.estado_id
         inner join grado_academicos GA ON GA.id=AL.egresado
         inner join distritos D on D.id=AL.distrito_id
-        where ALV.created_at BETWEEN '".$fecha_inicial." 00:00:00' AND '".$fecha_final." 23:59:59' AND AL.deleted_at is null ".$programa_estudio." ".$grado_academico." ".$estado_estudiante."");
+        where ALV.created_at BETWEEN '".$fecha_inicial." 00:00:00' AND '".$fecha_final." 23:59:59' AND AL.deleted_at is null AND AV.deleted_at is null AND ".$programa_estudio." ".$grado_academico." ".$estado_estudiante."");
         $query->execute();
         return $query->fetchAll();
     }
