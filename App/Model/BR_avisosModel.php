@@ -31,7 +31,7 @@ class BR_avisosModel extends Model
         left join areas AR on AR.id= A.solicita_carrera
         left join grado_academicos GA on GA.id= A.solicita_grado_a
         left join tipo_personas TP on TP.id=EM.tipo_persona
-        WHERE (A.titulo like '%".$valor."%' or EM.ruc like '%".$valor."%') AND A.deleted_at IS NULL limit 80");
+        WHERE (A.titulo like '%".$valor."%' or EM.ruc like '%".$valor."%') AND A.deleted_at IS NULL limit 200");
         $query->execute();
         return $query->fetchAll();
     }
