@@ -158,7 +158,7 @@ function ReporteEmpleadorMes(){
         contentType: false,
         processData: false,
         success: function(respuesta){
-            /* console.log("esto es el reporte del empleador: ",respuesta); */
+            console.log("esto es el reporte del empleador: ",respuesta);
             Highcharts.chart('container_line', {
                 chart: {
                     type: 'spline'
@@ -195,43 +195,9 @@ function ReporteEmpleadorMes(){
                     }
                 },
                 series: [{
-                    name: respuesta[2]['TipoPer'],
+                    name: respuesta[4]['TipoPer']+' - '+respuesta[4]['Año'],
                     marker: {
                         symbol: 'square'
-                    },
-                    data: [parseInt(respuesta[2]['Enero']),
-                           parseInt(respuesta[2]['Febrero']),
-                           parseInt(respuesta[2]['Marzo']),
-                           parseInt(respuesta[2]['Abril']),
-                           parseInt(respuesta[2]['Mayo']),
-                           parseInt(respuesta[2]['Junio']),
-                           parseInt(respuesta[2]['Julio']),
-                           parseInt(respuesta[2]['Agosto']),
-                           parseInt(respuesta[2]['Setiembre']),
-                           parseInt(respuesta[2]['Octubre']),
-                           parseInt(respuesta[2]['Noviembre']),
-                           parseInt(respuesta[2]['Diciembre'])]
-                }, {
-                    name: respuesta[3]['TipoPer'],
-                    marker: {
-                        symbol: 'diamond'
-                    },
-                    data: [parseInt(respuesta[3]['Enero']),
-                           parseInt(respuesta[3]['Febrero']),
-                           parseInt(respuesta[3]['Marzo']),
-                           parseInt(respuesta[3]['Abril']),
-                           parseInt(respuesta[3]['Mayo']),
-                           parseInt(respuesta[3]['Junio']),
-                           parseInt(respuesta[3]['Julio']),
-                           parseInt(respuesta[3]['Agosto']),
-                           parseInt(respuesta[3]['Setiembre']),
-                           parseInt(respuesta[3]['Octubre']),
-                           parseInt(respuesta[3]['Noviembre']),
-                           parseInt(respuesta[3]['Diciembre'])]
-                }, {
-                    name: respuesta[4]['TipoPer'],
-                    marker: {
-                        symbol: 'circle'
                     },
                     data: [parseInt(respuesta[4]['Enero']),
                            parseInt(respuesta[4]['Febrero']),
@@ -245,6 +211,40 @@ function ReporteEmpleadorMes(){
                            parseInt(respuesta[4]['Octubre']),
                            parseInt(respuesta[4]['Noviembre']),
                            parseInt(respuesta[4]['Diciembre'])]
+                }, {
+                    name: respuesta[6]['TipoPer']+' - '+respuesta[6]['Año'],
+                    marker: {
+                        symbol: 'diamond'
+                    },
+                    data: [parseInt(respuesta[6]['Enero']),
+                           parseInt(respuesta[6]['Febrero']),
+                           parseInt(respuesta[6]['Marzo']),
+                           parseInt(respuesta[6]['Abril']),
+                           parseInt(respuesta[6]['Mayo']),
+                           parseInt(respuesta[6]['Junio']),
+                           parseInt(respuesta[6]['Julio']),
+                           parseInt(respuesta[6]['Agosto']),
+                           parseInt(respuesta[6]['Setiembre']),
+                           parseInt(respuesta[6]['Octubre']),
+                           parseInt(respuesta[6]['Noviembre']),
+                           parseInt(respuesta[6]['Diciembre'])]
+                }, {
+                    name: respuesta[11]['TipoPer']+' - '+respuesta[11]['Año'],
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: [parseInt(respuesta[11]['Enero']),
+                           parseInt(respuesta[11]['Febrero']),
+                           parseInt(respuesta[11]['Marzo']),
+                           parseInt(respuesta[11]['Abril']),
+                           parseInt(respuesta[11]['Mayo']),
+                           parseInt(respuesta[11]['Junio']),
+                           parseInt(respuesta[11]['Julio']),
+                           parseInt(respuesta[11]['Agosto']),
+                           parseInt(respuesta[11]['Setiembre']),
+                           parseInt(respuesta[11]['Octubre']),
+                           parseInt(respuesta[11]['Noviembre']),
+                           parseInt(respuesta[11]['Diciembre'])]
                 }]
             });
 
