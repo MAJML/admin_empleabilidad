@@ -150,8 +150,7 @@ class BR_empleadoresModel extends Model
                                                           tipo_persona,
                                                           nombre_paciente,
                                                           enfermedad_paciente,
-                                                          online,
-                                                          created_at)                                                                                                                     
+                                                          online)                                                                                                                     
         VALUES ("'.$datos["ruc"].'",
                 "'.$datos["razon_social"].'",  
                 "'.$datos["nombre_comercial"].'", 
@@ -173,8 +172,7 @@ class BR_empleadoresModel extends Model
                 "'.$datos['tipo_persona'].'",
                 "'.$datos['nombre_paciente'].'",
                 "'.$datos['enfermedad_paciente'].'",
-                0,
-                "'.$datos['fecha_creacion'].'")');
+                0)');
         if($query->execute()){
             return "ok";
         }else{

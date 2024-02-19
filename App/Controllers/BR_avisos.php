@@ -15,6 +15,7 @@ class BR_avisos
 {
     public function __construct()
     {
+        date_default_timezone_set('America/Lima');
         session_start();
         if(empty($_SESSION['username'])){
             session_destroy();
@@ -51,6 +52,7 @@ class BR_avisos
 
     public function CrearAviso()
     {
+        $fecha_actual = date("Y-m-d H:i:s");
         $data = array(
             'empresa_id'            => $_POST['id_empresa'],
             'titulo'                => $_POST['titulo_aviso'],
@@ -64,7 +66,7 @@ class BR_avisos
             'carrera'               => $_POST['id_carrera'],
             'solicita_grado'        => $_POST['grado_academic_aviso'],
             'ciclo'                 => $_POST['ciclo_aviso'],
-            'creacion_aviso'        => $_POST['creacion_aviso'],
+            'creacion_aviso'        => $fecha_actual,
             'vigencia'              => $_POST['vigencia_aviso']
         );
         $respuesta = $this->avisos->RegistroAviso($data);

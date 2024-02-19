@@ -150,13 +150,13 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <!-- <div class="col-md-4">
                                                 <div class="position-relative form-group">
                                                     <label for="" class="form-label"><b>Fecha de Creación.</b></label>
                                                     <input required name="creacion_aviso" id="" type="datetime-local"
                                                         class="form-control form-control-sm">
                                                 </div>
-                                            </div>
+                                            </div> -->
 
                                         </div>
                                         <div class="divider"></div>
