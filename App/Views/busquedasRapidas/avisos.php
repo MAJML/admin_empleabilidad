@@ -166,7 +166,7 @@ table.dataTable td {
                 </select>
             </div>
             <div class="col-md-12 mb-3">
-                <textarea name="mod_form_descripcion" id="mod_form_descripcion" class="form-control form-control-sm" cols="30" rows="10" placeholder="Redacte mas detalladamente la oferta laboral" required>
+                <textarea name="mod_form_descripcion" id="mod_form_descripcion" class="form-control form-control-sm" cols="30" rows="10" contenteditable="true" required>
                 </textarea>
             </div>
             <div class="col-md-3 mb-3">
@@ -291,7 +291,7 @@ table.dataTable td {
 </div>
 
 <!-- LIBRERIA DATATABLES -->
-
+<script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
@@ -301,4 +301,10 @@ table.dataTable td {
 <!-- APP JS -->
 <script type="text/javascript" src="<?= $baseUrl ?>assets/scripts/main.d810cf0ae7f39f28f336.js"></script>
 <script src="js/avisos/index.js"></script>
+<script>
+    $(document).ready(function() {
+        /* CKEDITOR.replace( 'mod_form_descripcion' ); */
+        /* CKEDITOR.inline( 'mod_form_descripcion' ); */
+    });
+</script>
 

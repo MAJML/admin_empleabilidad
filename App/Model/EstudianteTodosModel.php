@@ -9,6 +9,62 @@ class EstudianteTodosModel extends Model
 
     public function ListaEstudiantePorFechas($fecha_inicial, $fecha_final, $validacion, $tipoEstudiante)
     {
+        $sql = "SELECT 
+            A.id,
+            A.nombres,
+            A.apellidos,
+            A.dni,
+            A.tipo_documento,
+            A.genero,
+            A.nacionalidad,
+            A.estado_civil,
+            A.telefono,
+            A.email,
+            A.perfil_profesional,
+            A.curso_talleres,
+            A.referentes_carrera,
+            A.fecha_nacimiento,
+            P.nombre AS 'nombre_provincia',
+            D.nombre AS 'nombre_distritos',
+            AR.nombre AS 'nombre_area',
+            A.ciclo,
+            A.direccion,
+            A.presentacion,
+            A.aprobado,
+            A.egresado,
+            A.anio_egreso,
+            A.semestre,
+            A.salario,
+            A.disponibilidad,
+            A.created_at
+        FROM alumnos A 
+        INNER JOIN provincias P ON P.id=A.provincia_id 
+        INNER JOIN distritos D ON D.id=A.distrito_id
+        INNER JOIN areas AR ON AR.id=area_id
+        LEFT JOIN educacions EDU ON EDU.alumno_id=A.id
+        WHERE A.egresado ".$tipoEstudiante." AND date(A.created_at) BETWEEN ? AND ? AND A.deleted_at IS NULL";
+    
+        switch ($validacion) {
+            case "COMPLETADO":
+                $sql .= " AND EDU.alumno_id IS NOT NULL";
+                break;
+            case "FALTA_COMPLETAR":
+                $sql .= " AND EDU.alumno_id IS NULL";
+                break;
+            default:
+                // No se agregan condiciones adicionales
+                break;
+        }
+
+        $query = $this->db->prepare($sql);
+        $query->bindValue(1, $fecha_inicial);
+        $query->bindValue(2, $fecha_final);
+        $query->execute();
+        return $query->fetchAll();
+    }
+    
+    public function ListaEstudiantePorFechasAntiguo($fecha_inicial, $fecha_final, $validacion, $tipoEstudiante)
+    {
         if($validacion == "COMPLETADO"){
             $query = $this->db->prepare("SELECT 
             A.id,

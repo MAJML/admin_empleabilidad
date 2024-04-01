@@ -1,5 +1,5 @@
 
-console.log('esto a consola de Todos los Estudiantes alumno')
+console.log('esto a consola de Todos los Estudiantes alumno ya esta actualizado')
 $(document).ready(function() {
     $('#example2').DataTable({
         "language": {
@@ -62,62 +62,74 @@ $(document).ready(function() {
     });
     /* END BUSQUEDA RAPIDA */
 
-
-	$(document).on('submit', "#ConsultaPJ", function(event){
-		event.preventDefault();
-		var data = $(this).serialize();
-
-        var f1 = $(".fecha1").val();
-        var f2 = $(".fecha2").val();
-        var validacion = $(".validacion").val();
-        var tipoEstudiante = $(".tipoEstudiante").val();
-        $(".ecxel").attr("href", 'EstudianteTodos/EsportarExcel/'+ f1 + '/' + f2 + '/' + tipoEstudiante + '/' + validacion)
-        $(".table_Estudiantes tbody").empty();
-		$.ajax({
-			type:"POST",
-			dataType:"json",
-			url:'EstudianteTodos/ConsultaDataPorFecha',
-			data:data,
+    $(document).on('submit', "#ConsultaPJ", function(event) {
+        event.preventDefault();
+        var $fecha1 = $(".fecha1"),
+            $fecha2 = $(".fecha2"),
+            $validacion = $(".validacion"),
+            $tipoEstudiante = $(".tipoEstudiante"),
+            $ecxel = $(".ecxel"),
+            $tableEstudiantes = $(".table_Estudiantes"),
+            $cargador = $(".cargador");
+        var data = $(this).serialize();
+        var f1 = $fecha1.val(),
+            f2 = $fecha2.val(),
+            validacion = $validacion.val(),
+            tipoEstudiante = $tipoEstudiante.val();
+        $ecxel.attr("href", 'EstudianteTodos/EsportarExcel/' + f1 + '/' + f2 + '/' + tipoEstudiante + '/' + validacion);
+        $tableEstudiantes.find('tbody').empty();
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: 'EstudianteTodos/ConsultaDataPorFecha',
+            data: data,
             beforeSend: function() {
-                $(".cargador").html(`
-                <td colspan=10>
-                    <div class="container-tablita">
-                        <div class="cargando">
-                            <div class="pelotas"></div>
-                            <div class="pelotas"></div>
-                            <div class="pelotas"></div>
-                            <span class="texto-cargando">Cargando...</span>
-                        </div>
-                    </div>                
-                </td>`)
+                $cargador.html(`
+                    <td colspan=10>
+                        <div class="container-tablita">
+                            <div class="cargando">
+                                <div class="pelotas"></div>
+                                <div class="pelotas"></div>
+                                <div class="pelotas"></div>
+                                <span class="texto-cargando">Cargando...</span>
+                            </div>
+                        </div>                
+                    </td>`);
             },
-			success:function(response){
-                /* console.log('esto es la rpta : ', response) */
-                var tabla = ""; var fila=1;
-                var oTable = $('.table_Estudiantes').dataTable();
-                oTable.fnClearTable();
-                for(var i = 0; i < response.length; i++) {
-                    var iconVer = '<a href="javascript:void(0)" onclick=verDataCV("'+ response[i]['id'] +'") class="btn btn-outline-primary mx-1" data-fancybox data-src="#modal_ver_data" data-width="3000" data-height="400"><i class="fa-solid fa-file"></i></a>';
-                    var iconDelete = '<a href="javascript:void(0)" onclick=AlertaEliminar("'+ response[i]['id'] +'") class="btn btn-outline-danger" ><i class="fa-solid fa-trash"></i></a>';
-                    oTable.fnAddData([ fila, 
-                                       response[i]['created_at'], 
-                                       response[i]['dni'], 
-                                       response[i]['apellidos'], 
-                                       response[i]['nombres'],
-                                       response[i]['nombre_distritos'],
-                                       response[i]['telefono'], 
-                                       response[i]['email'],
-                                       response[i]['nombre_area'],
-                                       '<div class="d-flex">'+iconVer + iconDelete+'</div>'
-                                    ]);
+            success: function(response) {
+                /* console.log('esto es la rpta a: ', response); */
+                var oTable = $tableEstudiantes.DataTable();
+                oTable.clear().draw();
+                var fila = 1;
+                response.forEach(function(item) {
+                    var iconVer = `<a href="javascript:void(0)" onclick=verDataCV("${item.id}") class="btn btn-outline-primary mx-1" data-fancybox data-src="#modal_ver_data" data-width="3000" data-height="400"><i class="fa-solid fa-file"></i></a>`;
+                    var iconDelete = `<a href="javascript:void(0)" onclick=AlertaEliminar("${item.id}") class="btn btn-outline-danger" ><i class="fa-solid fa-trash"></i></a>`;
+                    // Agregar datos a la tabla utilizando el método DataTables row.add()
+                    oTable.row.add([
+                        fila,
+                        item.created_at,
+                        item.dni,
+                        item.apellidos,
+                        item.nombres,
+                        item.nombre_distritos,
+                        item.telefono,
+                        item.email,
+                        item.nombre_area,
+                        `<div class="d-flex">${iconVer}${iconDelete}</div>`
+                    ]);
                     fila++;
-                }
+                });
+                oTable.draw();  
+            },
+            error: function() {
+                console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
+            }
+        });
+    });
+    
+    
 
-			},error:function(){
-			console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
-			}
-		});
-	});
+
     
 });
 

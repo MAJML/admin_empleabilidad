@@ -227,7 +227,7 @@ function editAviso(idData)
     url:'Avisos/TraeDataAvisoModific',
     data: {id:idData},
     success:function(response){
-      /* console.log(response); */
+      console.log(response);
       fecha = new Date(response[0]['publicado']);
       var fechaObjeto = new Date(fecha.toDateString());
       var mes = fechaObjeto.getMonth() + 1;
@@ -242,9 +242,15 @@ function editAviso(idData)
       $("#mod_form_carrera").val(response[0]["solicita_carrera"])
       $("#mod_form_estado").val(response[0]["solicita_grado_a"])
       $("#mod_form_vigencia").val(response[0]["periodo_vigencia"])
-      $("#mod_form_descripcion").val(response[0]["descripcion"])
+      $("#mod_form_descripcion").html(response[0]["descripcion"])
       $("#mod_form_salario").val(response[0]["salario"])
       $("#mod_form_grado").val(response[0]["ciclo_cursa"])  
+
+      /* CKEDITOR.on('instanceReady', function(event) {
+          var editor = CKEDITOR.instances.mod_form_descripcion;
+          if (editor) {editor.setData(response[0]["descripcion"]);}
+      }); */
+
       inputs_validation()
     },error:function(){
     console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
